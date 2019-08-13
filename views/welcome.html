@@ -1,0 +1,41 @@
+<div class="container backgrund" style="overflow: hidden;" > 
+<!--  back-img="{{imagecom}}" -->
+    <div >
+        <div class="center">
+            <h2 style="font-weight: bolder;font-size: 7.7em;">Welcome Home</h2>
+            <br>
+            <br>
+            <a ui-sref="main.home" style="width: 49% !important;" id="btn-welcomestart" >Tap to start</a>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+.backgrund {
+    /*linear-gradient(rgba(87, 194, 239, 0.45), rgba(32, 23, 23, 0.45))*/
+    background: 
+    linear-gradient(rgba(87, 194, 239, 0.45), rgba(0, 0, 0, 0))
+    ,url('img/Bg.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+a {
+    display: inline-block;
+    padding: 15px 0;
+    width: 100%;
+    font-size: 25px;
+    color: white;
+    background: rgba(9, 152, 161, 0.74);
+    border: 1px solid rgba(9, 152, 161, 0);
+    border-radius: 30px;
+}
+
+a:hover, a:focus {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+</style>

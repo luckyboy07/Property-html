@@ -1,0 +1,125 @@
+<div class="backgrund" style="overflow: hidden;">
+    <div class="row">
+        <button class="backbtn" ng-click="goBack()"><img src="img/backarrow.svg"></button>
+       <!--  <div class="center" style="color:black">
+            <img src="img/circle-add.svg" ng-click="modal()" class="circle1">
+        </div>
+        <div class="circle2">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+        <div class="circle3">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+        <div class="circle4">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+         <div class="circle5">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+         <div class="circle6">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+        <div class="circle7">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div> -->
+         <div class="interior">
+            <h2>Dining</h2>
+           <div class="selection">
+                Spaces
+           </div>
+        </div>
+          <div class="welcome-btn">
+            <button type="button" class="btn prop-btn" ui-sref="main.client">Finish  <img src="img/arrow2.svg" style="position: absolute;right: 25px;"></button>   
+        </div>
+    </div>
+</div>
+<style type="text/css">
+.backgrund {
+    background: url('img/dining.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+.circle1{
+    position: absolute;
+    left: 35%;
+    top: 9%;
+}
+.circle1:hover {
+    cursor: pointer;
+}
+
+.circle2 {
+    position: absolute;
+    right: 25%;
+    top: 14%;
+}
+
+.circle3 {
+   position: absolute;
+   right: 40%;
+    top: 29%;
+}
+
+.circle4 {
+    position: absolute;
+    left: 28%;
+    top: 60%;
+}
+.circle5 {
+    position: absolute;
+    bottom: 28%;
+    right: 33%;
+
+}
+.circle6 {
+    position: absolute;
+    right: 31%;
+    top: 60%;
+}
+.circle7{
+    position: absolute;
+    left: 40%;
+    bottom: 10%;
+}
+.modal-dialog{
+    margin-top: 210px !important;
+}
+
+.modal-sm {
+    width: 400px !important;
+}
+.interior{
+    position: absolute;
+       bottom: 0px;
+    left: 0px;
+    color: #fff;
+        width: 25%;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(255,0,0,0), #083750);
+}
+.selection{
+        background: #0d374c;
+    font-size: 18px;
+    /* height: 23px; */
+    padding: 10px;
+}
+.welcome-btn{
+        position: absolute;
+        right: 80px;
+    bottom: 37px;
+}
+.prop-btn {
+    font-size: 18px;
+    height: 48px;
+    /*width: 200px;*/
+        width: 196px;
+    border-radius: 36px;
+     background-color: rgba(9, 152, 161, 0.74);
+    color: #ffffff;
+    padding-left: 0px;
+}
+</style>

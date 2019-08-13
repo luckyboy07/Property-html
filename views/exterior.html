@@ -1,0 +1,457 @@
+<div class="container">
+    <div class="row">
+        <!-- <div class="wrapper"> -->
+        <div class="side-bar">
+            <ul>
+                <button class="backbtn color-btn" ng-click="goBack()" id="btn-back" style="top:27px !important;"><img src="img/backarrow.svg"></button>
+                <br>
+                <br>
+                <li class="menu-head">
+                    <h2 style="padding-left: 15px;color: #03141f;">Exterior Schemes</h2>
+                </li>
+                <div class="menu">
+                    <li ng-repeat="item in themes track by $index" class="grid" ng-click="getTheme(item,$index)">
+                        <img ng-src="{{item.image}}" err-src="./img/error.jpg" class="grid-img" style="width: 100%">
+                        <div class="item-overlay" ng-class="{'top':item.selected}">
+                            <img src="img/selected.png" class="item-Img" ng-class="{'active':item.selected}">
+                            <div class="item-Name">{{item.theme_name || item.package_name }}</div>
+                        </div>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <div class="scheme-content">
+            <a href="" ng-click="goNext('zoom')">
+                <img src="img/zoom2.svg" style="position: absolute;right: 0px;padding: 15px 30px;">
+            </a>
+            <div style="overflow: hidden;">
+                <img src="{{themedetail.image}}" err-src="./img/error.jpg" style="width: 100%;" class="imagehyytt">
+            </div>
+            <div class="col-md-12 scheme2">
+                <div class="col-md-12">
+                    <div class="row" style="text-align: left;margin-top: 20px;">
+                        <div class="col-md-7">
+                            <h1>{{themedetail.package_name}}</h1>
+                            <p style="font-size: 17px;text-align: left;">
+                                <!-- A three-bedroom delight -->
+                                <!-- <br> -->
+                                <br>{{themedetail.description}}
+                                <br>
+                                <br>
+                            </p>
+                            <!-- <br> The Balmoral is a unique design that encompasses so much of what we would love in a variety of designs all wrapped up in to one. Brand new to market this home design has been created as part of the new 'Rebuild with Rawson' range especially adapted to fit those not so easy narrow blocks. Also perfect for the sometimes difficult to meet council requirements when knocking down and rebuilding. We've taken the headache out of this process with a design created to be built anywhere, anytime. 
+                                    <br><br>
+                                    Balmoral MK I 38 & MK II 38 are Narrow Block Compatible designs.</p> -->
+                        </div>
+                        <div class="col-md-5">
+                            <ol style="margin-top: 35px;">
+                                <li ng-repeat="item in themedetail.package_items">
+                                    <span style="font-weight: bold;font-size: 15px;">{{item.surface.surface_name}}</span>
+                                    <br> {{item.product.item_name}}
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+        <div class="welcome-btn">
+            <button type="button" class="btn prop-btn" ng-click="goNext('next')" id="btn-exterior">Interior Scheme <img src="img/arrow2.svg" style="padding-left: 10px;"></button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".push_menu").click(function() {
+        $(".wrapper").toggleClass("active");
+    });
+});
+</script>
+<style type="text/css">
+@import url(http://fonts.googleapis.com/css?family=Lato);
+
+
+.btn.focus,
+.btn:focus,
+.btn:hover {
+    color: #fff !important;
+}
+
+body {
+    overflow: hidden;
+}
+
+/*.welcome-btn {
+    position: absolute;
+    right: 80px;
+    margin-top: 30px;
+    bottom: 15px;
+    margin-bottom: 15px;
+}*/
+
+.prop-btn {
+    font-size: 18px;
+    height: 48px;
+    /*width: 200px;*/
+    width: 200px;
+    border-radius: 36px;
+    background-color: rgba(9, 152, 161, 0.74);
+    color: #ffffff;
+    padding-left: 14px;
+}
+
+.container {
+    width: 800px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.title-scheme {
+    font-size: 35px;
+    font-weight: bold;
+    color: #0e3045;
+}
+
+.side-bar {
+    position: fixed;
+    /*height: 100%;*/
+    bottom: 0;
+    top: 0;
+    overflow: auto;
+    width: 23.5%;
+    color: #fff;
+    margin-top: -15px;
+    transition: margin-left 0.5s;
+    box-shadow: 3px 0px 8px 3px rgba(179, 179, 179, 0.25);
+}
+
+.side-bar ul {
+    list-style: none;
+    padding: 0px;
+}
+
+.side-bar ul .menu li a img {
+    position: absolute;
+    right: 25px;
+    opacity: 0;
+}
+
+
+
+
+
+
+
+
+/*.card:hover .item-overlay.item-topzz,
+.card:hover .item-overlay.top,
+.grid:active .item-overlay.top,
+.grid:hover .item-overlay.top {
+    top: 0;
+}*/
+
+
+/*.card:hover .item-overlay.right,
+.grid:active .item-overlay.right,
+.grid:hover .item-overlay.right {
+    right: 0;
+    left: 0;
+}*/
+
+.card:hover .item-overlay.bottom,
+.grid:active .item-overlay.bottom,
+.grid:hover .item-overlay.bottom {
+    bottom: 0;
+}
+
+
+
+
+
+
+
+
+/*.card:hover .item-overlay.left,
+.grid:active .item-overlay.left,
+.grid:hover .item-overlay.left {
+    left: 0;
+}*/
+
+
+/*.card:hover .item-Name,
+.grid:active .item-Name,
+.grid:hover .item-Name {
+    background: transparent;
+    font-size: 30px;
+    bottom: 28px;
+    transition-delay: .1s;
+}*/
+
+
+/*.card:hover .item-Img,
+.grid:active .item-Img,
+.grid:hover .item-Img {
+    opacity: 1;
+    transition-delay: .3s;
+}*/
+
+.card:hover .item-Btn {
+    display: inherit;
+    transition-delay: .3s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+by default, overlay is visible… 
+*/
+
+.item-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(92, 186, 189, 0.45), #021c1d);
+    color: #fff;
+    overflow: hidden;
+    /*text-align: center;*/
+    /* fix text transition issue for .left and .right but need to overwrite left and right properties in .right */
+    width: 100%;
+    -moz-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+    -webkit-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+    transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+    top: 76%;
+}
+
+.item-overlay.top {
+    top: 0 !important;
+}
+
+.item-overlay.top .item-Name {
+    background: transparent;
+    font-size: 15px;
+    bottom: 0px;
+    transition-delay: .1s;
+}
+
+.item-Name {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background: #071c2d;
+    height: 44px;
+    color: #fff;
+    width: 100%;
+    padding: 11px 30px;
+    /* -moz-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+    -webkit-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+    transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;*/
+}
+
+.item-Img {
+    position: absolute;
+    right: 0;
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 20px;
+    opacity: 0;
+}
+
+.item-Img.active {
+    opacity: 1;
+    transition-delay: .3s;
+}
+
+.item-Btn {
+    display: none;
+}
+
+.item-overlay.right {
+    right: 200%;
+    left: -100%;
+}
+
+.item-overlay.bottom {
+    bottom: 100%;
+}
+
+.item-overlay.left {
+    left: 100%;
+}
+
+.item-topzz {
+    top: 90%;
+}
+
+
+
+
+
+
+
+
+/*li {
+    margin-bottom: 5px;
+}*/
+
+.side-bar ul li.menu-head {
+    font-family: 'Lato', sans-serif;
+    padding: 20px;
+}
+
+.scheme-content {
+    position: absolute;
+    margin-left: 23.5%;
+    text-align: center;
+    margin-top: -15px;
+    width: 76%;
+}
+.scheme-content .scheme2 {
+    overflow-y: auto;
+    height: 35vh;
+    margin-top: 10px;
+}
+.side-bar ul li.menu-head a {
+    color: #fff;
+    text-decoration: none;
+    height: 50px;
+}
+
+
+.side-bar ul .menu-head a {
+    color: #fff;
+    text-decoration: none;
+    height: 50px;
+}
+
+.side-bar ul .menu li a {
+    /* background: linear-gradient(to left, rgba(255, 0, 0, 0), #60798e); */
+    color: #fff;
+    text-decoration: none;
+    display: inline-table;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 17px;
+}
+
+.side-bar ul .menu li a:hover {
+    padding-left: 40px;
+    background: #3bb1d9;
+}
+
+.side-bar ul .menu li a:hover img,
+.side-bar ul .menu li a.active img {
+    opacity: 1 !important;
+}
+
+.side-bar ul .menu li a.active {
+    padding-left: 40px;
+    background: #3bb1d9;
+}
+
+.grid-imgss {
+    width: 375px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.grid-imgss img {
+    width: 40px;
+}
+
+
+
+
+
+.grid {
+    position: relative;
+    list-style: none;
+    background: #ffffff;
+    box-sizing: border-box;
+    -webkit-transition: all 400ms ease;
+    transition: all 400ms ease;
+    overflow: hidden;
+    border-radius: 0px;
+    width: 100%;
+    outline: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.side-bar ul .menu li a.active:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+
+    border-left: 18px solid #113045;
+    margin-top: -10px;
+    margin-left: 180px;
+}*/
+
+.content {
+    /*padding-left: 200px;*/
+    /*transition: padding-left 0.5s;*/
+}
+
+.active>.side-bar {
+    margin-left: -150px;
+    transition: margin-left 0.5s;
+}
+
+.active>.content {
+    padding-left: 50px;
+    transition: padding-left 0.5s;
+}
+
+.menuHyt {
+    height: 770px;
+}
+
+.welcome-btn {
+    position: fixed;
+    right: 68px;
+    /*margin-top: 30px;*/
+    bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.imagehyytt {
+    height: 400px;
+}
+
+@media only screen and (min-width: 1824px) {
+    .imagehyytt {
+        height: 550px;
+    }
+}
+</style>

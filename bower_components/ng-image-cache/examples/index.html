@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html data-ng-app="demo" data-ng-strict-di>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angular Image Cache</title>
+  </head>
+  <body>
+    <div class="Wrapper" ng-controller="WrapperController as $ctrl">
+      <ui-image ui-src="'images/angularjs.png'" ui-title="'local'"></ui-image>
+      <ui-image ui-src="$ctrl.src" ui-title="$ctrl.title"></ui-image>
+    </div>
+    <script defer src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script defer src="../dist/ng-image-cache.js"></script>
+    <script defer src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,389 @@
+<div class="container">
+    <div class="row">
+        <div class="wrapper">
+            <div class="side-bar">
+                <ul>
+                    <li class="menu-head">
+                        <button class="backbtn color-btn" ng-click="goBack()" id="btn-back"><img src="img/backarrow.svg"></button>
+                        <br>
+                        <br>
+                        <h2 style="padding-left: 40px;">Spaces</h2>
+                    </li>
+                    <div class="menu">
+                        <!-- class="active" -->
+                        <li>
+                            <a href="" class="selected">Floorplan <img src="img/selected.png" class="image-selected"></a>
+                        </li>
+                        <!--  <li ng-repeat="item in spaces.spaces" ng-click="getSpaces(item)">
+                            <a href="">{{item.space_name}} <img src="img/selected.png"></a>
+                        </li> -->
+                        <li>
+                            <a href="">Exterior Scheme (Facade)<img src="img/selected.png" class=""></a>
+                        </li>
+                        <li>
+                            <a href="">Interior Scheme <img src="img/selected.png" class=""></a>
+                        </li>
+                        <li>
+                            <a href="">Client information </a>
+                        </li>
+                        <!--  <li>
+                            <a href="" >Love snippet <img src="img/selected.png"></a>
+                        </li>
+                        <li>
+                            <a href="">Like it?  <img src="img/selected.png"></a>
+                        </li> -->
+                        <div style="position: absolute;bottom: 0;text-decoration: none;
+                        display:inline-table;width: 100%;padding-left: 40px;padding-right: 20px; padding-top: 15px;padding-bottom: 15px;font-size: 17px;background: rgba(27, 63, 87, 0.46);">
+                            <a href="" style="color: #fff;" ui-sref="main.welcome" id="btn-gobackhome">Restart Home <img src="img/home.svg" style="position: absolute;right: 25px;"></a>
+                        </div>
+                        <!--   <li >
+                            
+                        </li> -->
+                    </div>
+                </ul>
+            </div>
+            <div class="scheme-content" style="background-color:#fff">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="title-detail">
+                                <div style="margin-bottom: 25px;text-align: center;margin-top: 10px;">
+                                    <span style="font-size: 2.5em">{{selectedHome}}</span>
+                                    <!-- <div style="display: flex;margin-top: 20px;">
+                                        <img src="img/hotel.svg" class="imgs">
+                                        <img src="img/hotel.svg" class="imgs">
+                                        <img src="img/chair.svg" class="imgs">
+                                        <img src="img/car.svg" class="imgs">
+                                    </div> -->
+                                    <div class="grid-imgss">
+                                        <div class="row">
+                                            <div class="col-md-3"><img src="img/bed.png" class="imgs">
+                                                <div>{{beds.length}}</div>
+                                            </div>
+                                            <div class="col-md-3"><img src="img/shower.png" class="imgs">
+                                                <div>{{shower.length}}</div>
+                                            </div>
+                                            <!--  <div class="col-md-3"><img src="img/sofa.png" class="imgs">
+                                                <div>1</div>
+                                            </div> -->
+                                            <div class="col-md-3"><img src="img/cars.png" class="imgs">
+                                                <div>{{garage.length + garage.doublegarage}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="row" style="text-align: left;margin-top: 20px;">
+                                            <div class="col-md-6">
+                                                <h3>Total Area</h3>
+                                                <p>{{totalSq}} Sq</p>
+                                                <!-- <p>{{floorDimensions[findDimension('Total Area')].dimension_name == 'Total Area' ? floorDimensions[findDimension('Total Area')].measurement : 'None'}}</p> -->
+                                            </div>
+                                            <!--  <div class="col-md-6">
+                                                <h3>Min. Block Width</h3>
+                                                <p>{{floorDimensions[findDimension('Min. Block Width')].dimension_name == 'Min. Block Width' ? floorDimensions[findDimension('Min. Block Width')].measurement : 'None'}}</p>
+                                            </div> -->
+                                        </div>
+                                        <!--   <div class="row" style="text-align: left;margin-top: 20px;">
+                                            <div class="col-md-12">
+                                                <h3>Features</h3>
+                                                <p><img src="img/check.svg"> Master Bed at Front</p>
+                                            </div>
+                                        </div> -->
+                                        <div class="row" style="text-align: left;margin-top: 20px;">
+                                            <div class="col-md-12">
+                                                <h3>Measurements</h3>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <h4>Home Dimensions</h4>
+                                            </div>
+                                        </div>
+                                        <!-- Home Dimensions -->
+                                        <!-- <div class="row" style="text-align: left;" ng-repeat="item in floorDimensions" ng-if="item.dimension_name!='Total Area' && item.dimension_name !='Min. Block Width' && item.classification_id == 1"> -->
+                                        <div class="row" style="text-align: left;" ng-repeat="item in floorDimensions">
+                                            <div class="col-md-6">
+                                                <p>{{item.dimension_name}}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{item.dimension}}{{item.dimension_unit}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="text-align: left;margin-top: 20px;">
+                                            <div class="col-md-12">
+                                                <h4>Room Dimensions</h4>
+                                            </div>
+                                            <!-- Room Dimensions -->
+                                            <!-- <div ng-repeat="item in floorDimensions" ng-if="item.classification_id == 2"> -->
+                                            <div ng-repeat="item in roomDimensions" id="measuredimension_{{$index}}">
+                                                <div class="col-md-6">
+                                                    <p>{{item.space_name}}</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>{{item.space_dimension}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="margin-top:15px;">
+                        <div class="row">
+                            <!-- <div class="col-md-12" style="margin-top: 10px;">
+                                <span style="font-size: 2.5em">Ground Floor</span>
+                            </div> -->
+                            <div class="col-md-6">
+                                <span style="font-size: 2.1em">Ground Floor</span>
+                            </div>
+                            <div class="col-md-6">
+                                <span style="font-size: 2.1em">2nd Floor</span>
+                            </div>
+                        </div>
+                        <div style="padding: 25px">
+                            <img src="{{floorplans.media_files[0].asset_url}}" err-src="./img/floor.png" style="width: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="welcome-btn">
+            <button type="button" class="btn prop-btn" ng-click="next()" id="btn-scheme">Exterior Scheme <img src="img/arrow2.svg" style="padding-left: 10px;"></button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".push_menu").click(function() {
+        $(".wrapper").toggleClass("active");
+    });
+});
+</script>
+<style type="text/css">
+@import url(http://fonts.googleapis.com/css?family=Lato);
+
+
+
+/*.welcome-btn {
+    margin-top: 50px;
+    float: right;
+    bottom: 0px;
+    margin-top: 39px;
+    margin-bottom: 50px;
+}*/
+
+.prop-btn {
+    font-size: 18px;
+    height: 48px;
+    width: 200px;
+    border-radius: 36px;
+    background-color: rgba(9, 152, 161, 0.74);
+    color: #ffffff;
+    padding-left: 14px;
+}
+
+.container {
+    width: 800px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.title-scheme {
+    font-size: 35px;
+    font-weight: bold;
+    color: #0e3045;
+}
+
+.side-bar {
+    background: linear-gradient(to right, #162e43, #073145);
+    position: fixed;
+    height: 100%;
+    width: 24%;
+    color: #fff;
+    margin-top: -15px;
+    transition: margin-left 0.5s;
+    box-shadow: 3px 0px 8px 3px #b3b3b3;
+}
+
+.side-bar ul {
+    list-style: none;
+    padding: 0px;
+}
+
+.side-bar ul .menu li a img {
+    position: absolute;
+    right: 25px;
+    opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*li {
+    margin-bottom: 5px;
+}*/
+
+.side-bar ul li.menu-head {
+    font-family: 'Lato', sans-serif;
+    padding: 20px;
+}
+
+.scheme-content {
+    position: absolute;
+    margin-left: 24%;
+    text-align: center;
+    margin-top: 28px;
+    width: 76%;
+}
+
+.side-bar ul li.menu-head a {
+    color: #fff;
+    text-decoration: none;
+    height: 50px;
+}
+
+
+.side-bar ul .menu-head a {
+    color: #fff;
+    text-decoration: none;
+    height: 50px;
+}
+
+.side-bar ul .menu li a {
+    /* background: linear-gradient(to left, rgba(255, 0, 0, 0), #60798e); */
+    color: #fff;
+    text-decoration: none;
+    display: inline-table;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 17px;
+}
+
+.side-bar ul .menu li a .selected {
+    padding-left: 40px;
+    background: #3bb1d9;
+}
+
+
+
+
+
+
+/*.side-bar ul .menu li a:hover img,
+.side-bar ul .menu li a.active img {
+    opacity: 1 !important;
+}*/
+
+.side-bar ul .menu li a.active {
+    padding-left: 40px;
+    background: #3bb1d9;
+}
+
+.grid-imgss {
+    width: 375px;
+    margin: auto;
+    margin-top: 30px;
+    margin-right: 10px;
+}
+
+.grid-imgss img {
+    width: 40px;
+}
+
+
+
+/*.side-bar ul .menu li a.active:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+
+    border-left: 18px solid #113045;
+    margin-top: -10px;
+    margin-left: 180px;
+}*/
+
+.content {
+    /*padding-left: 200px;*/
+    /*transition: padding-left 0.5s;*/
+}
+
+.active>.side-bar {
+    margin-left: -150px;
+    transition: margin-left 0.5s;
+}
+
+.active>.content {
+    padding-left: 50px;
+    transition: padding-left 0.5s;
+}
+
+.selected {
+    padding-left: 40px;
+    background: #3bb1d9;
+}
+
+.image-selected {
+    opacity: 1 !important;
+}
+
+.imagehyytt {
+    height: 400px;
+}
+
+.welcome-btn {
+    position: fixed;
+    right: 68px;
+    /*margin-top: 30px;*/
+    bottom: 15px;
+    margin-bottom: 15px;
+}
+
+@media only screen and (min-device-width: 1300px) and (max-device-width: 1366px) {
+    /*  .imagehyytt {
+        height: 400px;
+    }*/
+    /*  .welcome-btn {
+        position: fixed;
+        right: 60px;
+        margin-top: 30px;
+        bottom: 37px;
+        margin-bottom: 15px;
+    }*/
+    .grid-imgss {
+        width: 553px;
+    }
+}
+
+@media only screen and (max-device-width: 1080px) {
+    /* .imagehyytt {
+        height: 400px;
+    }*/
+    .grid-imgss {
+        width: 553px;
+    }
+}
+
+@media only screen and (min-width: 1824px) {
+    .grid-imgss {
+        width: 553px;
+    }
+}
+</style>

@@ -1,0 +1,351 @@
+<div class="container" style="overflow: hidden !important;">
+    <div class="row">
+        <form role="form" ng-submit="send()" name="clientform">
+            <div class="wrapper">
+                <div class="side-bar">
+                    <ul>
+                        <li class="menu-head" ng-if="!thankyou">
+                            <button type="button" class="backbtn color-btn" ng-click="goBack()" id="btn-back"><img src="img/backarrow.svg"></button>
+                            <br>
+                            <br>
+                            <h2 style="padding-left: 40px;">Spaces</h2>
+                        </li>
+                        <div class="menu">
+                            <!-- class="active" -->
+                            <li ng-if="!thankyou">
+                                <a href="">Floorplan </a>
+                            </li>
+                            <!--  <li ng-repeat="item in spaces.spaces" ng-click="getSpaces(item)">
+                            <a href="">{{item.space_name}} <img src="img/selected.png"></a>
+                        </li> -->
+                            <li ng-if="!thankyou">
+                                <a href="">Exterior Scheme (Facade)<img src="img/selected.png" class=""></a>
+                            </li>
+                            <li ng-if="!thankyou">
+                                <a href="">Interior Scheme <img src="img/selected.png" class=""></a>
+                            </li>
+                            <li ng-if="!thankyou">
+                                <a href="" class="selected">Client information <img src="img/selected.png" class="image-selected"></a>
+                            </li>
+                            <!--  <li>
+                            <a href="" >Love snippet <img src="img/selected.png"></a>
+                        </li>
+                        <li>
+                            <a href="">Like it?  <img src="img/selected.png"></a>
+                        </li> -->
+                            <div style="position: absolute;bottom: 0;text-decoration: none;
+                        display:inline-table;width: 100%;padding-left: 40px;padding-right: 20px; padding-top: 15px;padding-bottom: 15px;font-size: 17px;background: rgba(27, 63, 87, 0.46);">
+                                <a href="" style="color: #fff;" ui-sref="main.welcome" id="btn-gobackhome">Restart Home <img src="img/home.svg" style="position: absolute;right: 25px;"></a>
+                            </div>
+                            <!--   <li >
+                            
+                        </li> -->
+                        </div>
+                    </ul>
+                </div>
+                <div class="scheme-content2" style="width:75%">
+                    <div class="col-md-12" ng-if="!thankyou">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="title-detail" style="margin-left: 8%;">
+                                    <div style="margin-bottom: 25px;margin-top: 10px;">
+                                        <span style="font-size: 3.1em">Your Information</span>
+                                        <div>
+                                            <p style="font-size: 23px;">We're almost there! Leave us your contact details, so we can send you the walkthrough of your dream home.</p>
+                                        </div>
+                                    </div>
+                                    <md-content layout="vertical" id="content" layout-padding layout-xl style="font-size: 2em;background-color: #fff;">
+                                        <div layout="row" layout-fill layout-md="row" layout-md="row" layout-align="start center">
+                                            <md-whiteframe layout="column" flex="70">
+                                                <md-content md-theme="docs-dark" style="overflow: visible;background-color: #fff;">
+                                                    <md-input-container class="md-block">
+                                                        <label>Name</label>
+                                                        <input ng-model="details.first_name" required style="height: 100%;">
+                                                    </md-input-container>
+                                                     <md-input-container class="md-block">
+                                                        <label>Middle Name</label>
+                                                        <input ng-model="details.middle_name" required style="height: 100%;">
+                                                    </md-input-container>
+                                                     <md-input-container class="md-block">
+                                                        <label>Last Name</label>
+                                                        <input ng-model="details.last_name" required style="height: 100%;">
+                                                    </md-input-container>
+                                                    <md-input-container class="md-block">
+                                                        <label>Contact number</label>
+                                                        <input ng-model="details.contact_number" type="text" numbers-only required style="height: 100%;" maxlength="11">
+                                                    </md-input-container>
+                                                    <md-input-container class="md-block">
+                                                        <label>Email address<small>(send multiple email)</small></label>
+                                                         
+                                                        <!-- <input ng-model="details.primary_email_address" type="email" required style="height: 100%;"> -->
+                                                        <md-chips ng-model="tagg" name="fruitName"  ng-required="true" md-removable="true"  type="email" style="height: 100%;" md-on-add="test(tagg)" md-add-on-blur="true">
+                                                            <md-chip-template>
+                                                                <strong>{{$chip}}</strong>
+                                                            </md-chip-template>
+                                                        </md-chips>
+                                                    </md-input-container>
+                                                </md-content>
+                                            </md-whiteframe>
+                                        </div>
+                                    </md-content>
+                                    <div layout-wrap layout-gt-lg="row" class="check-font">
+                                        <div flex-gt-lg="50">
+                                            <md-checkbox ng-model="clientform.check" aria-label="Checkbox 1" class="md-primary" required>
+                                                I've reviewed my selections and confirm that these are what I want to explore.
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" ng-if="thankyou">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="title-detail" style="margin-left: 8%;margin-top: 20%;">
+                                    <div style="margin-bottom: 25px">
+                                        <span style="font-size: 5em">You're all set!</span>
+                                    </div>
+                                    <p style="font-size: 24px;width: 50%;">We've sent your selections to our walkthrough production bot. It's now being produced!</p>
+                                    <br>
+                                    <p style="font-size: 24px;;width: 50%">In the next 30-45 minutes, you should receive an email notification and a link to your very own walkthrough video.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="welcome-btn">
+                <button type="submit" class="btn prop-btn" id="btn-scheme" ng-disabled="clientform.$invalid || !able" ng-if="!thankyou">Finish <img src="img/arrow2.svg" style="padding-left: 10px;"></button>
+                <button type="type" class="btn prop-btn" id="btn-scheme" ng-if="thankyou" ui-sref="main.welcome">Done</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".push_menu").click(function() {
+        $(".wrapper").toggleClass("active");
+    });
+});
+</script>
+<style type="text/css">
+.md-chips .md-chip-input-container {
+    margin: 10px 7px -24px 0 !important;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Lato);
+
+
+/*.welcome-btn {
+    position: absolute;
+    right: 80px;
+    bottom: 37px;
+}
+*/
+
+.prop-btn {
+    font-size: 18px;
+    height: 48px;
+    /*width: 200px;*/
+    width: 200px;
+    border-radius: 36px;
+    background-color: rgba(9, 152, 161, 0.74);
+    color: #ffffff;
+    padding-left: 14px;
+    font-weight: bold;
+}
+
+.container {
+    width: 800px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.title-scheme {
+    font-size: 35px;
+    font-weight: bold;
+    color: #0e3045;
+}
+
+.side-bar {
+    background: linear-gradient(to right, #162e43, #073145);
+    position: absolute;
+    height: 109vh;
+    width: 24%;
+    color: #fff;
+    margin-top: -15px;
+    transition: margin-left 0.5s;
+    box-shadow: 3px 0px 8px 3px #b3b3b3;
+}
+
+.side-bar ul {
+    list-style: none;
+    padding: 0px;
+}
+
+.side-bar ul .menu li a img {
+    position: absolute;
+    right: 25px;
+    opacity: 0;
+}
+
+
+
+
+
+
+
+/*li {
+    margin-bottom: 5px;
+}*/
+
+.side-bar ul li.menu-head {
+    font-family: 'Lato', sans-serif;
+    padding: 20px;
+}
+
+.scheme-content {
+    position: absolute;
+    margin-left: 24%;
+    text-align: center;
+    margin-top: 28px;
+    width: 76%;
+}
+
+.scheme-content2 {
+    position: absolute;
+    margin-left: 24%;
+    /*text-align: center;*/
+    margin-top: 28px;
+}
+
+.side-bar ul li.menu-head a {
+    color: #fff;
+    text-decoration: none;
+    height: 50px;
+}
+
+
+.side-bar ul .menu-head a {
+    color: #fff;
+    text-decoration: none;
+    height: 50px;
+}
+
+.side-bar ul .menu li a {
+    /* background: linear-gradient(to left, rgba(255, 0, 0, 0), #60798e); */
+    color: #fff;
+    text-decoration: none;
+    display: inline-table;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 17px;
+}
+
+.side-bar ul .menu li a .selected {
+    padding-left: 40px;
+    background: #3bb1d9;
+}
+
+
+
+
+
+
+
+
+
+/*.side-bar ul .menu li a:hover img,
+.side-bar ul .menu li a.active img {
+    opacity: 1 !important;
+}*/
+
+.side-bar ul .menu li a.active {
+    padding-left: 40px;
+    background: #3bb1d9;
+}
+
+.grid-imgss {
+    width: 375px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.grid-imgss img {
+    width: 40px;
+}
+
+
+
+
+
+
+
+
+/*.side-bar ul .menu li a.active:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+
+    border-left: 18px solid #113045;
+    margin-top: -10px;
+    margin-left: 180px;
+}*/
+
+.content {
+    /*padding-left: 200px;*/
+    /*transition: padding-left 0.5s;*/
+}
+
+.active>.side-bar {
+    margin-left: -150px;
+    transition: margin-left 0.5s;
+}
+
+.active>.content {
+    padding-left: 50px;
+    transition: padding-left 0.5s;
+}
+
+.selected {
+    padding-left: 40px;
+    background: #3bb1d9;
+}
+
+.image-selected {
+    opacity: 1 !important;
+}
+
+.check-font {
+    font-size: 1.3em;
+}
+
+@media only screen and (min-width: 1824px) {
+    .imagehyytt {
+        height: 400px;
+    }
+    /*.welcome-btn {
+        position: fixed;
+        right: 68px;
+        margin-top: 30px;
+        bottom: 15px;
+        margin-bottom: 15px;
+    }*/
+    .side-bar{
+        height: 100%;
+    }
+}
+
+@media only screen and (min-device-width: 1080px) and (max-device-width: 1920px) {
+    .check-font {
+        font-size: 1.1em;
+    }
+}
+</style>

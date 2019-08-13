@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "952548098614",
+    "firebase_url": "https://ustpbulleten.firebaseio.com",
+    "project_id": "ustpbulleten",
+    "storage_bucket": "ustpbulleten.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952548098614:android:b0662d49d545f413",
+        "android_client_info": {
+          "package_name": "com.ionic.ustp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952548098614-ob6ofgljngk1nrkqqp1ej7t4dgo9n1df.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvK_Y997ChT2l1Xr0mTAlvarU8PzUODcM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
