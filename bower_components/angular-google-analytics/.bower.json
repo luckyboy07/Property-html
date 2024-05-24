@@ -40,6 +40,5 @@
   },
   "_source": "https://github.com/revolunet/angular-google-analytics.git",
   "_target": "^1.1.9",
-  "_originalSource": "angular-google-analytics",
-  "_direct": true
+  "_originalSource": "angular-google-analytics"
 }

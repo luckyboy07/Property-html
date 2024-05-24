@@ -19,31 +19,33 @@
         async.waterfall([
             function(cb) {
                 $rootScope.showLoader = true;
-                $http.post(API_URL + "/login", { email_address: 'test@gmail.com' })
-                    .then(function(response) {
-                        if (response.data.status && response.data.message == 'accepted') {
-                            $http.defaults.headers.common['Authorization'] = response.data.token;
-                            $localForage.setItem('token', response.data.token);
-                            cb();
-                        }
-                    })
-            },
+                // $http.post(API_URL + "/login", { email_address: 'test@gmail.com' })
+                //     .then(function(response) {
+                //         if (response.data.status && response.data.message == 'accepted') {
+                //             $http.defaults.headers.common['Authorization'] = response.data.token;
+                //             $localForage.setItem('token', response.data.token);
+                //             cb();
+                //         }
+                //     })
+                    cb();
+                },
             function(cb) {
-                $http.get(API_URL + '/consolidated').then(function(resp) {
-                    $scope.data = resp;
-                    if (resp.status == 200 && resp.statusText == 'OK') {
-                        _.each(resp.data.interior_schemes, function(row) {
-                            row.image = API_URL + '/' + row.media_file.media_url
-                        });
-                        _.each(resp.data.exterior_schemes, function(row) {
-                            row.image = API_URL + '/' + row.media_file.media_url;
-                        });
-                        $localForage.setItem('property', resp.data);
-                        $timeout(function() {
-                            $rootScope.showLoader = false;
-                        }, 500)
-                    }
-                });
+                // $http.get(API_URL + '/consolidated').then(function(resp) {
+                //     $scope.data = resp;
+                //     if (resp.status == 200 && resp.statusText == 'OK') {
+                //         _.each(resp.data.interior_schemes, function(row) {
+                //             row.image = API_URL + '/' + row.media_file.media_url
+                //         });
+                //         _.each(resp.data.exterior_schemes, function(row) {
+                //             row.image = API_URL + '/' + row.media_file.media_url;
+                //         });
+                //         $localForage.setItem('property', resp.data);
+                //         $timeout(function() {
+                //             $rootScope.showLoader = false;
+                //         }, 500)
+                //     }
+                // });
+                $rootScope.showLoader = false;
             }
         ])
 

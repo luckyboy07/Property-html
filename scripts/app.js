@@ -113,7 +113,7 @@
                 $localForage.getItem('property').then(function(data) {
                     if (fromState.name == 'main.welcome' || fromState.name == 'main.home') {
                         if (!data) {
-                            $state.go('main.welcome');
+                            // $state.go('main.welcome');
                         } else {
                             $localForage.getItem('property_data').then(function(items) {
                                 if (toState.name !== 'main.home') {

@@ -1,7 +1,7 @@
 exterior_schemes: [{
     date_created: "2017-11-02T01:39:25.000Z",
     theme_id: 8,
-    theme_name: "Buff"
+    theme_name: "Buff",
     styles: [{
             asset: "ART_AliceStuartProfile_Stone",
             date_created: "2017-11-02T01:54:12.000Z",

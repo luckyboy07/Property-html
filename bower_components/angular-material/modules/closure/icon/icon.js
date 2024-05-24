@@ -2,7 +2,7 @@
  * AngularJS Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.1.5
+ * v1.2.5
  */
 goog.provide('ngmaterial.components.icon');
 goog.require('ngmaterial.core');
@@ -40,28 +40,11 @@ angular
  * `md-icon` lets you consume an icon font by letting you reference specific icons in that font
  * by name rather than character code.
  *
- * ### SVG
- * For SVGs, the problem with using `<img>` or a CSS `background-image` is that you can't take
- * advantage of some SVG features, such as styling specific parts of the icon with CSS or SVG
- * animation.
- *
- * `md-icon` makes it easier to use SVG icons by *inlining* the SVG into an `<svg>` element in the
- * document. The most straightforward way of referencing an SVG icon is via URL, just like a
- * traditional `<img>`. `$mdIconProvider`, as a convenience, lets you _name_ an icon so you can
- * reference it by name instead of URL throughout your templates.
- *
- * Additionally, you may not want to make separate HTTP requests for every icon, so you can bundle
- * your SVG icons together and pre-load them with $mdIconProvider as an icon set. An icon set can
- * also be given a name, which acts as a namespace for individual icons, so you can reference them
- * like `"social:cake"`.
- *
- * When using SVGs, both external SVGs (via URLs) or sets of SVGs [from icon sets] can be
- * easily loaded and used. When using font-icons, developers must follow three (3) simple steps:
+ * When using font-icons, developers must follow three (3) simple steps:
  *
  * <ol>
  * <li>Load the font library. e.g.<br/>
- *    `<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
- *    rel="stylesheet">`
+ *    `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
  * </li>
  * <li>
  *   Use either (a) font-icon class names or (b) a fontset and a font ligature to render the font glyph by
@@ -79,26 +62,36 @@ angular
  * </li>
  * </ol>
  *
- * Full details for these steps can be found:
+ * Full details for these steps can be found in the
+ * <a href="http://google.github.io/material-design-icons/#icon-font-for-the-web" target="_blank">
+ * Material Design Icon font for the web docs</a>.
  *
- * <ul>
- * <li>http://google.github.io/material-design-icons/</li>
- * <li>http://google.github.io/material-design-icons/#icon-font-for-the-web</li>
- * </ul>
+ * You can browse and search the Material Design icon style <code>.material-icons</code>
+ * in the <a href="https://material.io/tools/icons/" target="_blank">Material Design Icons tool</a>.
  *
- * The Material Design icon style <code>.material-icons</code> and the icon font references are published in
- * Material Design Icons:
+ * ### SVG
+ * For SVGs, the problem with using `<img>` or a CSS `background-image` is that you can't take
+ * advantage of some SVG features, such as styling specific parts of the icon with CSS or SVG
+ * animation.
  *
- * <ul>
- * <li>https://design.google.com/icons/</li>
- * <li>https://design.google.com/icons/#ic_accessibility</li>
- * </ul>
+ * `md-icon` makes it easier to use SVG icons by *inlining* the SVG into an `<svg>` element in the
+ * document. The most straightforward way of referencing an SVG icon is via URL, just like a
+ * traditional `<img>`. `$mdIconProvider`, as a convenience, lets you _name_ an icon so you can
+ * reference it by name instead of URL throughout your templates.
+ *
+ * Additionally, you may not want to make separate HTTP requests for every icon, so you can bundle
+ * your SVG icons together and pre-load them with `$mdIconProvider` as an icon set. An icon set can
+ * also be given a name, which acts as a namespace for individual icons, so you can reference them
+ * like `"social:cake"`.
+ *
+ * When using SVGs, both external SVGs (via URLs) or sets of SVGs (from icon sets) can be
+ * easily loaded and used.
  *
  * ### Localization
  *
- * Because an `md-icon` element's text content is not intended to translated, it is recommended to declare the text
- * content for an `md-icon` element in its start tag. Instead of using the HTML text content, consider using `ng-bind`
- * with a scope variable or literal string.
+ * Because an `md-icon` element's text content is not intended to be translated, it is recommended
+ * to declare the text content for an `md-icon` element in its start tag. Instead of using the HTML
+ * text content, consider using `ng-bind` with a scope variable or literal string.
  *
  * Examples:
  *
@@ -107,71 +100,80 @@ angular
  *   <li>`<md-icon ng-bind="'menu'"></md-icon>`
  * </ul>
  *
- * <h2 id="material_design_icons">Material Design Icons</h2>
- * Using the Material Design Icon-Selector, developers can easily and quickly search for a Material Design font-icon and
- * determine its textual name and character reference code. Click on any icon to see the slide-up information
- * panel with details regarding a SVG download or information on the font-icon usage.
+ * <h2 id="material_design_icons">Material Design Icons tool</h2>
+ * Using the Material Design Icons tool, developers can easily and quickly search for a specific
+ * open source Material Design icon. The search is in the top left. Below search, you can select
+ * from the new icon themes or filter by icon category.
  *
- * <a href="https://www.google.com/design/icons/#ic_accessibility" target="_blank" style="border-bottom:none;">
- * <img src="https://cloud.githubusercontent.com/assets/210413/7902490/fe8dd14c-0780-11e5-98fb-c821cc6475e6.png"
- *      aria-label="Material Design Icon-Selector" style="max-width:75%;padding-left:10%">
+ * <a href="https://material.io/tools/icons/" target="_blank" style="border-bottom:none;">
+ * <img src="https://user-images.githubusercontent.com/3506071/41942584-ef0695d0-796d-11e8-9436-44f25023a111.png"
+ *      aria-label="Material Design Icons tool" style="max-width:95%">
  * </a>
  *
- * <span class="image_caption">
- *  Click on the image above to link to the
- *  <a href="https://design.google.com/icons/#ic_accessibility" target="_blank">Material Design Icon-Selector</a>.
- * </span>
+ * <div class="md-caption" style="text-align: center; margin-bottom: 24px">
+ *  Click on the image above to open the
+ *  <a href="https://material.io/tools/icons/" target="_blank">Material Design Icons tool</a>.
+ * </div>
+ *
+ * Click on any icon, then click on the "Selected Icon" chevron to see the slide-up
+ * information panel with details regarding a SVG download and information on the font-icon's
+ * textual name. This panel also allows you to select a black on transparent or white on transparent
+ * icon and to change the icon size. These settings only affect the downloaded icons.
  *
  * @param {string} md-font-icon String name of CSS icon associated with the font-face will be used
- * to render the icon. Requires the fonts and the named CSS styles to be preloaded.
+ *  to render the icon. Requires the fonts and the named CSS styles to be preloaded.
  * @param {string} md-font-set CSS style name associated with the font library; which will be assigned as
- * the class for the font-icon ligature. This value may also be an alias that is used to lookup the classname;
- * internally use `$mdIconProvider.fontSet(<alias>)` to determine the style name.
+ *  the class for the font-icon ligature. This value may also be an alias that is used to lookup the classname;
+ *  internally use `$mdIconProvider.fontSet(<alias>)` to determine the style name.
  * @param {string} md-svg-src String URL (or expression) used to load, cache, and display an
- *     external SVG.
+ *  external SVG.
  * @param {string} md-svg-icon md-svg-icon String name used for lookup of the icon from the internal cache;
- *     interpolated strings or expressions may also be used. Specific set names can be used with
- *     the syntax `<set name>:<icon name>`.<br/><br/>
- * To use icon sets, developers are required to pre-register the sets using the `$mdIconProvider` service.
- * @param {string=} aria-label Labels icon for accessibility. If an empty string is provided, icon
- * will be hidden from accessibility layer with `aria-hidden="true"`. If there's no aria-label on the icon
- * nor a label on the parent element, a warning will be logged to the console.
- * @param {string=} alt Labels icon for accessibility. If an empty string is provided, icon
- * will be hidden from accessibility layer with `aria-hidden="true"`. If there's no alt on the icon
- * nor a label on the parent element, a warning will be logged to the console.
+ *  interpolated strings or expressions may also be used. Specific set names can be used with
+ *  the syntax `<set name>:<icon name>`.<br/><br/>
+ *  To use icon sets, developers are required to pre-register the sets using the `$mdIconProvider` service.
+ * @param {string=} aria-label Labels the icon for accessibility. If an empty string is provided,
+ *  the icon will be hidden from the accessibility layer with `aria-hidden="true"`. If there is no
+ *  `aria-label` attribute on the icon, we check the following, in order: the `alt` attribute, the
+ *  `aria-label` from the parent element, the icon's `md-font-icon` or `md-svg-icon` string, and the
+ *  text content inside `<md-icon></md-icon>`. If none of these have any text, the icon is hidden
+ *  from the accessibility layer with `aria-hidden="true"`.
+ * @param {string=} alt Labels the icon for accessibility. If an empty string is provided and the
+ *  icon has no `aria-label`, then the icon will be hidden from accessibility layer with
+ *  `aria-hidden="true"`.
  *
  * @usage
  * When using SVGs:
  * <hljs lang="html">
  *
- *  <!-- Icon ID; may contain optional icon set prefix; icons must registered using $mdIconProvider -->
- *  <md-icon md-svg-icon="social:android"    aria-label="android " ></md-icon>
+ *<!-- Icon ID; may contain optional icon set prefix.
+ *     Icons must be registered using $mdIconProvider. -->
+ *<md-icon md-svg-icon="social:android"    aria-label="android " ></md-icon>
  *
- *  <!-- Icon urls; may be preloaded in templateCache -->
- *  <md-icon md-svg-src="/android.svg"       aria-label="android " ></md-icon>
- *  <md-icon md-svg-src="{{ getAndroid() }}" aria-label="android " ></md-icon>
+ *<!-- Icon urls; may be preloaded in templateCache -->
+ *<md-icon md-svg-src="/android.svg"       aria-label="android " ></md-icon>
+ *<md-icon md-svg-src="{{ getAndroid() }}" aria-label="android " ></md-icon>
  *
  * </hljs>
  *
  * Use the <code>$mdIconProvider</code> to configure your application with
- * svg iconsets.
+ * SVG icon sets.
  *
  * <hljs lang="js">
- *  angular.module('appSvgIconSets', ['ngMaterial'])
- *    .controller('DemoCtrl', function($scope) {})
- *    .config(function($mdIconProvider) {
- *      $mdIconProvider
- *         .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
- *         .defaultIconSet('img/icons/sets/core-icons.svg', 24);
- *     });
+ * angular.module('appSvgIconSets', ['ngMaterial'])
+ *   .controller('DemoCtrl', function($scope) {})
+ *   .config(function($mdIconProvider) {
+ *     $mdIconProvider
+ *       .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+ *       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+ *    });
  * </hljs>
  *
  *
  * When using Font Icons with classnames:
  * <hljs lang="html">
  *
- *  <md-icon md-font-icon="android" aria-label="android" ></md-icon>
- *  <md-icon class="icon_home"      aria-label="Home"    ></md-icon>
+ * <md-icon md-font-icon="android" aria-label="android" ></md-icon>
+ * <md-icon class="icon_home" aria-label="Home"></md-icon>
  *
  * </hljs>
  *
@@ -215,7 +217,10 @@ function mdIconDirective($mdIcon, $mdTheming, $mdAria, $sce) {
 
   /**
    * Directive postLink
-   * Supports embedded SVGs, font-icons, & external SVGs
+   * Supports embedded SVGs, font-icons, & external SVGs.
+   * @param {IScope} scope
+   * @param {JQLite} element
+   * @param {IAttributes} attr
    */
   function postLink(scope, element, attr) {
     $mdTheming(element);
@@ -227,15 +232,6 @@ function mdIconDirective($mdIcon, $mdTheming, $mdAria, $sce) {
     attr.$observe('mdFontIcon', fontIconChanged);
     attr.$observe('mdFontSet', fontIconChanged);
 
-    // Keep track of the content of the svg src so we can compare against it later to see if the
-    // attribute is static (and thus safe).
-    var originalSvgSrc = element[0].getAttribute(attr.$attr.mdSvgSrc);
-
-    // If using a font-icon, then the textual name of the icon itself
-    // provides the aria-label.
-
-    var attrName = attr.$normalize(attr.$attr.mdSvgIcon || attr.$attr.mdSvgSrc || '');
-
     /* Provide a default accessibility role of img */
     if (!attr.role) {
       $mdAria.expect(element, 'role', 'img');
@@ -243,24 +239,33 @@ function mdIconDirective($mdIcon, $mdTheming, $mdAria, $sce) {
       attr.role = 'img';
     }
 
+    // If the aria-label is explicitly set to the empty string, then hide this element from the
+    // accessibility layer.
+    if (element[0].hasAttribute('aria-label') && attr.ariaLabel === '') {
+      element.attr('aria-hidden', true);
+    }
+
     /* Don't process ARIA if already valid */
-    if ( attr.role === "img" && !attr.ariaHidden && !$mdAria.hasAriaLabel(element) ) {
-      var iconName;
-      if (attr.alt) {
-        /* Use alt text by default if available */
+    if (attr.role === "img" && !attr.ariaHidden && !$mdAria.hasAriaLabel(element)) {
+      // If the developer signals to hide this icon from the accessibility layer, do so.
+      if (element[0].hasAttribute('alt') && attr.alt === '') {
+        element.attr('aria-hidden', true);
+      } else if (attr.alt) {
+        /* Use the alt text for the aria-label by default, if available. */
         $mdAria.expect(element, 'aria-label', attr.alt);
       } else if ($mdAria.parentHasAriaLabel(element, 2)) {
-        /* Parent has ARIA so we will assume it will describe the image */
+        /* Parent has ARIA so we will assume it will describe the icon. */
         $mdAria.expect(element, 'aria-hidden', 'true');
-      } else if (iconName = (attr.mdFontIcon || attr.mdSvgIcon || element.text())) {
-        /* Use icon name as aria-label */
-        $mdAria.expect(element, 'aria-label', iconName);
+      } else if (attr.mdFontIcon || attr.mdSvgIcon || element.text()) {
+        /* Use icon name or node's text content as the aria-label */
+        $mdAria.expect(element, 'aria-label', attr.mdFontIcon || attr.mdSvgIcon || element.text());
       } else {
-        /* No label found */
+        /* No label found, hide this icon from the accessibility layer */
         $mdAria.expect(element, 'aria-hidden', 'true');
       }
     }
 
+    var attrName = attr.$normalize(attr.$attr.mdSvgIcon || attr.$attr.mdSvgSrc || '');
     if (attrName) {
       // Use either pre-configured SVG or URL source, respectively.
       attr.$observe(attrName, function(attrVal) {
@@ -328,8 +333,8 @@ MdIconService['$inject'] = ["config", "$templateRequest", "$q", "$log", "$mdUtil
  *
  * @description
  * `$mdIconProvider` is used only to register icon IDs with URLs. These configuration features allow
- * icons and icon sets to be pre-registered and associated with source URLs **before** the `<md-icon />`
- * directives are compiled.
+ * icons and icon sets to be pre-registered and associated with source URLs **before** the
+ * `<md-icon />` directives are compiled.
  *
  * If using font-icons, the developer is responsible for loading the fonts.
  *
@@ -339,15 +344,16 @@ MdIconService['$inject'] = ["config", "$templateRequest", "$q", "$log", "$mdUtil
  * that URL is used to on-demand load and parse the SVG dynamically.
  *
  * The `$templateRequest` service expects the icons source to be loaded over trusted URLs.<br/>
- * This means, when loading icons from an external URL, you have to trust the URL in the `$sceDelegateProvider`.
+ * This means, when loading icons from an external URL, you have to trust the URL in the
+ * `$sceDelegateProvider`.
  *
  * <hljs lang="js">
  *   app.config(function($sceDelegateProvider) {
- *     $sceDelegateProvider.resourceUrlWhitelist([
- *       // Adding 'self' to the whitelist, will allow requests from the current origin.
+ *     $sceDelegateProvider.trustedResourceUrlList([
+ *       // Adding 'self' to the allow-list, will allow requests from the current origin.
  *       'self',
  *       // Using double asterisks here, will allow all URLs to load.
- *       // We recommend to only specify the given domain you want to allow.
+ *       // However, we recommend only specifying the given domain you want to allow.
  *       '**'
  *     ]);
  *   });
@@ -355,7 +361,7 @@ MdIconService['$inject'] = ["config", "$templateRequest", "$q", "$log", "$mdUtil
  *
  * Read more about the [$sceDelegateProvider](https://docs.angularjs.org/api/ng/provider/$sceDelegateProvider).
  *
- * **Notice:** Most font-icons libraries do not support ligatures (for example `fontawesome`).<br/>
+ * **Notice:** Most font-icon libraries do not support ligatures (for example `fontawesome`).<br/>
  *  In such cases you are not able to use the icon's ligature name - Like so:
  *
  *  <hljs lang="html">
@@ -374,45 +380,40 @@ MdIconService['$inject'] = ["config", "$templateRequest", "$q", "$log", "$mdUtil
  * @usage
  * <hljs lang="js">
  *   app.config(function($mdIconProvider) {
-    *
-    *     // Configure URLs for icons specified by [set:]id.
-    *
-    *     $mdIconProvider
-    *          .defaultFontSet( 'fa' )                   // This sets our default fontset className.
-    *          .defaultIconSet('my/app/icons.svg')       // Register a default set of SVG icons
-    *          .iconSet('social', 'my/app/social.svg')   // Register a named icon set of SVGs
-    *          .icon('android', 'my/app/android.svg')    // Register a specific icon (by name)
-    *          .icon('work:chair', 'my/app/chair.svg');  // Register icon in a specific set
-    *   });
+ *
+ *     // Configure URLs for icons specified by [set:]id.
+ *     $mdIconProvider
+ *       .defaultFontSet( 'fa' )                   // This sets our default fontset className.
+ *       .defaultIconSet('my/app/icons.svg')       // Register a default set of SVG icons
+ *       .iconSet('social', 'my/app/social.svg')   // Register a named icon set of SVGs
+ *       .icon('android', 'my/app/android.svg')    // Register a specific icon (by name)
+ *       .icon('work:chair', 'my/app/chair.svg');  // Register icon in a specific set
+ *   });
  * </hljs>
  *
- * SVG icons and icon sets can be easily pre-loaded and cached using either (a) a build process or (b) a runtime
- * **startup** process (shown below):
+ * SVG icons and icon sets can be easily pre-loaded and cached using either (a) a build process or
+ * (b) a runtime **startup** process (shown below):
  *
  * <hljs lang="js">
  *   app.config(function($mdIconProvider) {
-    *
-    *     // Register a default set of SVG icon definitions
-    *     $mdIconProvider.defaultIconSet('my/app/icons.svg')
-    *
-    *   })
- *   .run(function($templateRequest){
-    *
-    *     // Pre-fetch icons sources by URL and cache in the $templateCache...
-    *     // subsequent $templateRequest calls will look there first.
-    *
-    *     var urls = [ 'imy/app/icons.svg', 'img/icons/android.svg'];
-    *
-    *     angular.forEach(urls, function(url) {
-    *       $templateRequest(url);
-    *     });
-    *
-    *   });
+ *
+ *     // Register a default set of SVG icon definitions
+ *     $mdIconProvider.defaultIconSet('my/app/icons.svg')
+ *   })
+ *   .run(function($templateRequest) {
+ *
+ *     // Pre-fetch icons sources by URL and cache in the $templateCache...
+ *     // subsequent $templateRequest calls will look there first.
+ *     var urls = [ 'imy/app/icons.svg', 'img/icons/android.svg'];
+ *
+ *     angular.forEach(urls, function(url) {
+ *       $templateRequest(url);
+ *     });
+ *   });
  *
  * </hljs>
  *
  * > <b>Note:</b> The loaded SVG data is subsequently cached internally for future requests.
- *
  */
 
 /**
@@ -420,31 +421,30 @@ MdIconService['$inject'] = ["config", "$templateRequest", "$q", "$log", "$mdUtil
  * @name $mdIconProvider#icon
  *
  * @description
- * Register a source URL for a specific icon name; the name may include optional 'icon set' name prefix.
- * These icons  will later be retrieved from the cache using `$mdIcon( <icon name> )`
+ * Register a source URL for a specific icon name; the name may include optional 'icon set' name
+ * prefix. These icons will later be retrieved from the cache using `$mdIcon(<icon name>)`.
  *
  * @param {string} id Icon name/id used to register the icon
  * @param {string} url specifies the external location for the data file. Used internally by
- * `$templateRequest` to load the data or as part of the lookup in `$templateCache` if pre-loading
- * was configured.
+ *  `$templateRequest` to load the data or as part of the lookup in `$templateCache` if pre-loading
+ *  was configured.
  * @param {number=} viewBoxSize Sets the width and height the icon's viewBox.
- * It is ignored for icons with an existing viewBox. Default size is 24.
+ *  It is ignored for icons with an existing viewBox. Default size is 24.
  *
  * @returns {obj} an `$mdIconProvider` reference; used to support method call chains for the API
  *
  * @usage
  * <hljs lang="js">
  *   app.config(function($mdIconProvider) {
-    *
-    *     // Configure URLs for icons specified by [set:]id.
-    *
-    *     $mdIconProvider
-    *          .icon('android', 'my/app/android.svg')    // Register a specific icon (by name)
-    *          .icon('work:chair', 'my/app/chair.svg');  // Register icon in a specific set
-    *   });
- * </hljs>
  *
+ *     // Configure URLs for icons specified by [set:]id.
+ *     $mdIconProvider
+ *       .icon('android', 'my/app/android.svg')    // Register a specific icon (by name)
+ *       .icon('work:chair', 'my/app/chair.svg');  // Register icon in a specific set
+ *   });
+ * </hljs>
  */
+
 /**
  * @ngdoc method
  * @name $mdIconProvider#iconSet
@@ -464,79 +464,73 @@ MdIconService['$inject'] = ["config", "$templateRequest", "$q", "$log", "$mdUtil
  *
  * @returns {obj} an `$mdIconProvider` reference; used to support method call chains for the API
  *
- *
  * @usage
  * <hljs lang="js">
  *   app.config(function($mdIconProvider) {
-    *
-    *     // Configure URLs for icons specified by [set:]id.
-    *
-    *     $mdIconProvider
-    *          .iconSet('social', 'my/app/social.svg')   // Register a named icon set
-    *   });
- * </hljs>
  *
+ *     // Configure URLs for icons specified by [set:]id.
+ *     $mdIconProvider
+ *       .iconSet('social', 'my/app/social.svg');   // Register a named icon set
+ *   });
+ * </hljs>
  */
+
 /**
  * @ngdoc method
  * @name $mdIconProvider#defaultIconSet
  *
  * @description
  * Register a source URL for the default 'named' set of icons. Unless explicitly registered,
- * subsequent lookups of icons will failover to search this 'default' icon set.
+ * subsequent lookups of icons will fail over to search this 'default' icon set.
  * Icon can be retrieved from this cached, default set using `$mdIcon(<name>)`
  *
  * @param {string} url specifies the external location for the data file. Used internally by
  * `$templateRequest` to load the data or as part of the lookup in `$templateCache` if pre-loading
  * was configured.
  * @param {number=} viewBoxSize Sets the width and height of the viewBox of all icons in the set.
- * It is ignored for icons with an existing viewBox. All icons in the icon set should be the same size.
- * Default value is 24.
+ * It is ignored for icons with an existing viewBox. All icons in the icon set should be the same
+ * size. Default value is 24.
  *
- * @returns {obj} an `$mdIconProvider` reference; used to support method call chains for the API
+ * @returns {Object} an `$mdIconProvider` reference; used to support method call chains for the API
  *
  * @usage
  * <hljs lang="js">
  *   app.config(function($mdIconProvider) {
-    *
-    *     // Configure URLs for icons specified by [set:]id.
-    *
-    *     $mdIconProvider
-    *          .defaultIconSet( 'my/app/social.svg' )   // Register a default icon set
-    *   });
- * </hljs>
  *
+ *     // Configure URLs for icons specified by [set:]id.
+ *     $mdIconProvider
+ *       .defaultIconSet('my/app/social.svg');   // Register a default icon set
+ *   });
+ * </hljs>
  */
+
 /**
  * @ngdoc method
  * @name $mdIconProvider#defaultFontSet
  *
  * @description
- * When using Font-Icons, AngularJS Material assumes the the Material Design icons will be used and automatically
- * configures the default font-set == 'material-icons'. Note that the font-set references the font-icon library
- * class style that should be applied to the `<md-icon>`.
+ * When using Font-Icons, AngularJS Material assumes the the Material Design icons will be used and
+ * automatically configures the default `font-set == 'material-icons'`. Note that the font-set
+ * references the font-icon library class style that should be applied to the `<md-icon>`.
  *
  * Configuring the default means that the attributes
- * `md-font-set="material-icons"` or `class="material-icons"` do not need to be explicitly declared on the
- * `<md-icon>` markup. For example:
+ * `md-font-set="material-icons"` or `class="material-icons"` do not need to be explicitly declared
+ * on the `<md-icon>` markup.
  *
- *  `<md-icon> face </md-icon>`
- *  will render as
- *  `<span class="material-icons"> face </span>`, and
+ * For example:<br/>
+ * `<md-icon>face</md-icon>` will render as `<span class="material-icons">face</span>`,<br/>
+ * and<br/>
+ * `<md-icon md-font-set="fa">face</md-icon>` will render as `<span class="fa">face</span>`
  *
- *  `<md-icon md-font-set="fa"> face </md-icon>`
- *  will render as
- *  `<span class="fa"> face </span>`
- *
- * @param {string} name of the font-library style that should be applied to the md-icon DOM element
+ * @param {string} name Name of the font-library style that should be applied to the md-icon DOM
+ *  element.
  *
  * @usage
  * <hljs lang="js">
  *   app.config(function($mdIconProvider) {
-   *     $mdIconProvider.defaultFontSet( 'fa' );
-   *   });
+ *     $mdIconProvider.defaultFontSet('fa');
+ *   });
  * </hljs>
- *
  */
 
 /**
@@ -544,21 +538,20 @@ MdIconService['$inject'] = ["config", "$templateRequest", "$q", "$log", "$mdUtil
  * @name $mdIconProvider#fontSet
  *
  * @description
- * When using a font set for `<md-icon>` you must specify the correct font classname in the `md-font-set`
- * attribute. If the fonset className is really long, your markup may become cluttered... an easy
- * solution is to define an `alias` for your fontset:
+ * When using a font-set for `<md-icon>` you must specify the correct font classname in the
+ * `md-font-set` attribute. If the font-set className is really long, your markup may become
+ * cluttered... an easy solution is to define an `alias` for your font-set:
  *
- * @param {string} alias of the specified fontset.
- * @param {string} className of the fontset.
+ * @param {string} alias Alias name of the specified font-set.
+ * @param {string} className Name of the class for the font-set.
  *
  * @usage
  * <hljs lang="js">
  *   app.config(function($mdIconProvider) {
-   *     // In this case, we set an alias for the `material-icons` fontset.
-   *     $mdIconProvider.fontSet('md', 'material-icons');
-   *   });
+ *     // In this case, we set an alias for the `material-icons` font-set.
+ *     $mdIconProvider.fontSet('md', 'material-icons');
+ *   });
  * </hljs>
- *
  */
 
 /**
@@ -566,25 +559,23 @@ MdIconService['$inject'] = ["config", "$templateRequest", "$q", "$log", "$mdUtil
  * @name $mdIconProvider#defaultViewBoxSize
  *
  * @description
- * While `<md-icon />` markup can also be style with sizing CSS, this method configures
+ * While `<md-icon>` markup can also be styled with sizing CSS, this method configures
  * the default width **and** height used for all icons; unless overridden by specific CSS.
- * The default sizing is (24px, 24px).
+ * The default sizing is (`24px`, `24px`).
  * @param {number=} viewBoxSize Sets the width and height of the viewBox for an icon or an icon set.
  * All icons in a set should be the same size. The default value is 24.
  *
- * @returns {obj} an `$mdIconProvider` reference; used to support method call chains for the API
+ * @returns {Object} an `$mdIconProvider` reference; used to support method call chains for the API
  *
  * @usage
  * <hljs lang="js">
  *   app.config(function($mdIconProvider) {
-    *
-    *     // Configure URLs for icons specified by [set:]id.
-    *
-    *     $mdIconProvider
-    *          .defaultViewBoxSize(36)   // Register a default icon size (width == height)
-    *   });
- * </hljs>
  *
+ *     // Configure URLs for icons specified by [set:]id.
+ *     $mdIconProvider
+ *       .defaultViewBoxSize(36);   // Register a default icon size (width == height)
+ *   });
+ * </hljs>
  */
 
 var config = {
@@ -657,14 +648,17 @@ MdIconProvider.prototype = {
   }]
 };
 
-/**
- *  Configuration item stored in the Icon registry; used for lookups
- *  to load if not already cached in the `loaded` cache
- */
-function ConfigurationItem(url, viewBoxSize) {
-  this.url = url;
-  this.viewBoxSize = viewBoxSize || config.defaultViewBoxSize;
-}
+  /**
+   * Configuration item stored in the Icon registry; used for lookups
+   * to load if not already cached in the `loaded` cache
+   * @param {string} url
+   * @param {=number} viewBoxSize
+   * @constructor
+   */
+  function ConfigurationItem(url, viewBoxSize) {
+    this.url = url;
+    this.viewBoxSize = viewBoxSize || config.defaultViewBoxSize;
+  }
 
 /**
  * @ngdoc service
@@ -688,24 +682,21 @@ function ConfigurationItem(url, viewBoxSize) {
  * @usage
  * <hljs lang="js">
  * function SomeDirective($mdIcon) {
-  *
-  *   // See if the icon has already been loaded, if not
-  *   // then lookup the icon from the registry cache, load and cache
-  *   // it for future requests.
-  *   // NOTE: ID queries require configuration with $mdIconProvider
-  *
-  *   $mdIcon('android').then(function(iconEl)    { element.append(iconEl); });
-  *   $mdIcon('work:chair').then(function(iconEl) { element.append(iconEl); });
-  *
-  *   // Load and cache the external SVG using a URL
-  *
-  *   $mdIcon('img/icons/android.svg').then(function(iconEl) {
-  *     element.append(iconEl);
-  *   });
-  * };
+ *
+ *   // See if the icon has already been loaded, if not then lookup the icon from the
+ *   // registry cache, load and cache it for future requests.
+ *   // NOTE: Non-URL queries require configuration with $mdIconProvider.
+ *   $mdIcon('android').then(function(iconEl)    { element.append(iconEl); });
+ *   $mdIcon('work:chair').then(function(iconEl) { element.append(iconEl); });
+ *
+ *   // Load and cache the external SVG using a URL.
+ *   $mdIcon('img/icons/android.svg').then(function(iconEl) {
+ *     element.append(iconEl);
+ *   });
+ * };
  * </hljs>
  *
- * > <b>Note:</b> The `<md-icon>` directive internally uses the `$mdIcon` service to query, loaded,
+ * > <b>Note:</b> The `<md-icon>` directive internally uses the `$mdIcon` service to query, load,
  *   and instantiate SVG DOM elements.
  */
 
@@ -713,8 +704,8 @@ function ConfigurationItem(url, viewBoxSize) {
 function MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce) {
   var iconCache = {};
   var svgCache = {};
-  var urlRegex = /[-\w@:%\+.~#?&//=]{2,}\.[a-z]{2,4}\b(\/[-\w@:%\+.~#?&//=]*)?/i;
-  var dataUrlRegex = /^data:image\/svg\+xml[\s*;\w\-\=]*?(base64)?,(.*)$/i;
+  var urlRegex = /[-\w@:%+.~#?&//=]{2,}\.[a-z]{2,4}\b(\/[-\w@:%+.~#?&//=]*)?/i;
+  var dataUrlRegex = /^data:image\/svg\+xml[\s*;\w\-=]*?(base64)?,(.*)$/i;
 
   Icon.prototype = {clone: cloneSVG, prepare: prepareAndStyle};
   getIcon.fontSet = findRegisteredFontSet;
@@ -724,6 +715,8 @@ function MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce) {
 
   /**
    * Actual $mdIcon service is essentially a lookup function
+   * @param {*} id $sce trust wrapper over a URL string, URL, icon registry id, or icon set id
+   * @returns {angular.$q.Promise}
    */
   function getIcon(id) {
     id = id || '';
@@ -747,7 +740,7 @@ function MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce) {
       return loadByURL(id).then(cacheIcon(id));
     }
 
-    if (id.indexOf(':') == -1) {
+    if (id.indexOf(':') === -1) {
       id = '$default:' + id;
     }
 
@@ -757,52 +750,140 @@ function MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce) {
   }
 
   /**
-   * Lookup registered fontSet style using its alias...
-   * If not found,
+   * Lookup a registered fontSet style using its alias.
+   * @param {string} alias used to lookup the alias in the array of fontSets
+   * @returns {*} matching fontSet or the defaultFontSet if that alias does not match
    */
   function findRegisteredFontSet(alias) {
     var useDefault = angular.isUndefined(alias) || !(alias && alias.length);
-    if (useDefault) return config.defaultFontSet;
+    if (useDefault) {
+      return config.defaultFontSet;
+    }
 
     var result = alias;
-    angular.forEach(config.fontSets, function(it) {
-      if (it.alias == alias) result = it.fontSet || result;
+    angular.forEach(config.fontSets, function(fontSet) {
+      if (fontSet.alias === alias) {
+        result = fontSet.fontSet || result;
+      }
     });
 
     return result;
   }
 
+  /**
+   * @param {!Icon} cacheElement cached icon from the iconCache
+   * @returns {Icon} cloned Icon element with unique ids
+   */
   function transformClone(cacheElement) {
     var clone = cacheElement.clone();
-    var cacheSuffix = '_cache' + $mdUtil.nextUid();
+    var newUid = $mdUtil.nextUid();
+    var cacheSuffix, svgUrlQuerySelector, i, xlinkHrefValue;
+    // These are SVG attributes that can reference element ids.
+    var svgUrlAttributes = [
+      'clip-path', 'color-profile', 'cursor', 'fill', 'filter', 'href', 'marker-start',
+      'marker-mid', 'marker-end', 'mask', 'stroke', 'style', 'vector-effect'
+    ];
+    var isIeSvg = clone.innerHTML === undefined;
 
-    // We need to modify for each cached icon the id attributes.
-    // This is needed because SVG id's are treated as normal DOM ids
-    // and should not have a duplicated id.
-    if (clone.id) clone.id += cacheSuffix;
-    angular.forEach(clone.querySelectorAll('[id]'), function(item) {
-      item.id += cacheSuffix;
+    // Verify that the newUid only contains a number and not some XSS content.
+    if (!isFinite(Number(newUid))) {
+      throw new Error('Unsafe and unexpected non-number result from $mdUtil.nextUid().');
+    }
+    cacheSuffix = '_cache' + newUid;
+
+    // For each cached icon, we need to modify the id attributes and references.
+    // This is needed because SVG ids are treated as normal DOM ids and should not be duplicated on
+    // the page.
+    if (clone.id) {
+      clone.id += cacheSuffix;
+    }
+
+    // Do as much as possible with querySelectorAll as it provides much greater performance
+    // than RegEx against serialized DOM.
+    angular.forEach(clone.querySelectorAll('[id]'), function(descendantElem) {
+      svgUrlQuerySelector = '';
+      for (i = 0; i < svgUrlAttributes.length; i++) {
+        svgUrlQuerySelector += '[' + svgUrlAttributes[i] + '="url(#' + descendantElem.id + ')"]';
+        if (i + 1 < svgUrlAttributes.length) {
+          svgUrlQuerySelector += ', ';
+        }
+      }
+      // Append the cacheSuffix to references of the element's id within url(#id) calls.
+      angular.forEach(clone.querySelectorAll(svgUrlQuerySelector), function(refItem) {
+        updateSvgIdReferences(descendantElem, refItem, isIeSvg, newUid);
+      });
+      // Handle usages of url(#id) in the SVG's stylesheets
+      angular.forEach(clone.querySelectorAll('style'), function(refItem) {
+        updateSvgIdReferences(descendantElem, refItem, isIeSvg, newUid);
+      });
+
+      // Update ids referenced by the deprecated (in SVG v2) xlink:href XML attribute. The now
+      // preferred href attribute is handled above. However, this non-standard XML namespaced
+      // attribute cannot be handled in the same way. Explanation of this query selector here:
+      // https://stackoverflow.com/q/23034283/633107.
+      angular.forEach(clone.querySelectorAll('[*|href]:not([href])'), function(refItem) {
+        xlinkHrefValue = refItem.getAttribute('xlink:href');
+        if (xlinkHrefValue) {
+          xlinkHrefValue = xlinkHrefValue.replace("#" + descendantElem.id, "#" + descendantElem.id + cacheSuffix);
+          refItem.setAttribute('xlink:href', xlinkHrefValue);
+        }
+      });
+
+      descendantElem.id += cacheSuffix;
     });
 
     return clone;
   }
 
   /**
-   * Prepare and cache the loaded icon for the specified `id`
+   * @param {Element} referencedElement element w/ id that needs to be updated
+   * @param {Element} referencingElement element that references the original id
+   * @param {boolean} isIeSvg true if we're dealing with an SVG in IE11, false otherwise
+   * @param {string} newUid the cache id to add as part of the cache suffix
+   */
+  function updateSvgIdReferences(referencedElement, referencingElement, isIeSvg, newUid) {
+    var svgElement, cacheSuffix;
+
+    // Verify that the newUid only contains a number and not some XSS content.
+    if (!isFinite(Number(newUid))) {
+      throw new Error('Unsafe and unexpected non-number result for newUid.');
+    }
+    cacheSuffix = '_cache' + newUid;
+
+    // outerHTML of SVG elements is not supported by IE11
+    if (isIeSvg) {
+      svgElement = $mdUtil.getOuterHTML(referencingElement);
+      svgElement = svgElement.replace("url(#" + referencedElement.id + ")",
+        "url(#" + referencedElement.id + cacheSuffix + ")");
+      referencingElement.textContent = angular.element(svgElement)[0].innerHTML;
+    } else {
+      // This use of outerHTML should be safe from XSS attack since we are only injecting the
+      // cacheSuffix with content from $mdUtil.nextUid which we verify is a finite number above.
+      referencingElement.outerHTML = referencingElement.outerHTML.replace(
+        "url(#" + referencedElement.id + ")",
+        "url(#" + referencedElement.id + cacheSuffix + ")");
+    }
+  }
+
+  /**
+   * Prepare and cache the loaded icon for the specified `id`.
+   * @param {string} id icon cache id
+   * @returns {function(*=): *}
    */
   function cacheIcon(id) {
 
     return function updateCache(icon) {
       iconCache[id] = isIcon(icon) ? icon : new Icon(icon, config[id]);
 
-      return iconCache[id].clone();
+      return transformClone(iconCache[id]);
     };
   }
 
   /**
    * Lookup the configuration in the registry, if !registered throw an error
    * otherwise load the icon [on-demand] using the registered URL.
-   *
+   * @param {string} id icon registry id
+   * @returns {angular.$q.Promise}
    */
   function loadByID(id) {
     var iconConfig = config[id];
@@ -812,8 +893,9 @@ function MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce) {
   }
 
   /**
-   *    Loads the file as XML and uses querySelector( <id> ) to find
-   *    the desired node...
+   * Loads the file as XML and uses querySelector( <id> ) to find the desired node...
+   * @param {string} id icon id in icon set
+   * @returns {angular.$q.Promise}
    */
   function loadFromIconSet(id) {
     var setName = id.substring(0, id.lastIndexOf(':')) || '$default';
@@ -838,6 +920,8 @@ function MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce) {
   /**
    * Load the icon by URL (may use the $templateCache).
    * Extract the data for later conversion to Icon
+   * @param {string} url icon URL
+   * @returns {angular.$q.Promise}
    */
   function loadByURL(url) {
     /* Load the icon from embedded data URL. */
@@ -876,17 +960,37 @@ function MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce) {
 
   /**
    * Check target signature to see if it is an Icon instance.
+   * @param {Icon|Element} target
+   * @returns {boolean} true if the specified target is an Icon object, false otherwise.
    */
   function isIcon(target) {
     return angular.isDefined(target.element) && angular.isDefined(target.config);
   }
 
   /**
-   *  Define the Icon class
+   * Define the Icon class
+   * @param {Element} el
+   * @param {=ConfigurationItem} config
+   * @constructor
    */
   function Icon(el, config) {
-    if (el && el.tagName != 'svg') {
-      el = angular.element('<svg xmlns="http://www.w3.org/2000/svg">').append(el.cloneNode(true))[0];
+    // If the node is a <symbol>, it won't be rendered so we have to convert it into <svg>.
+    if (el && el.tagName.toLowerCase() === 'symbol') {
+      var viewbox = el.getAttribute('viewBox');
+      // // Check if innerHTML is supported as IE11 does not support innerHTML on SVG elements.
+      if (el.innerHTML) {
+        el = angular.element('<svg xmlns="http://www.w3.org/2000/svg">')
+          .html(el.innerHTML)[0];
+      } else {
+        el = angular.element('<svg xmlns="http://www.w3.org/2000/svg">')
+          .append($mdUtil.getInnerHTML(el))[0];
+      }
+      if (viewbox) el.setAttribute('viewBox', viewbox);
+    }
+
+    if (el && el.tagName.toLowerCase() !== 'svg') {
+      el = angular.element(
+        '<svg xmlns="http://www.w3.org/2000/svg">').append(el.cloneNode(true))[0];
     }
 
     // Inject the namespace if not available...

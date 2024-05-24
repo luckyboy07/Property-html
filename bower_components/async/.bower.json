@@ -15,15 +15,14 @@
     "Makefile"
   ],
   "homepage": "https://github.com/caolan/async",
-  "version": "2.6.0",
-  "_release": "2.6.0",
+  "version": "2.6.4",
+  "_release": "2.6.4",
   "_resolution": {
     "type": "version",
-    "tag": "v2.6.0",
-    "commit": "82f9f46d3866069d69f199c07401c1393f5e5926"
+    "tag": "v2.6.4",
+    "commit": "8c6942fd638e91dd22a48ee38c37150f37deb6b4"
   },
   "_source": "https://github.com/caolan/async.git",
   "_target": "^2.6.0",
-  "_originalSource": "async",
-  "_direct": true
+  "_originalSource": "async"
 }

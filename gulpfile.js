@@ -103,7 +103,19 @@ gulp.task('serve', function() {
         .on('change', browserSync.reload);
 });
 
-
+gulp.task('servedist', function() {
+    browserSync.init({
+        notify: false,
+        port: 9013,
+        server: "./dist",
+        routes: {
+            "bower_components": "../bower_components"
+        },
+        ui: {
+            port: 24681
+        }
+    });
+});
 
 gulp.task('dist', function() {
     return runSeq('minify', 'copytemplates', 'copyfonts', 'copyimages');

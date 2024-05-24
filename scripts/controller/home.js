@@ -8,10 +8,10 @@
 
     function homeCtrl($scope, $rootScope, $state, angularGridInstance, $http, API_URL, $timeout, $localForage, toastr, $window) {
         console.log('homeCtrl');
-        gtag('config', 'UA-113798651-1', {
-            'page_title': 'homedesignpage',
-            'page_path': $state.current.url
-        });
+        // gtag('config', 'UA-113798651-1', {
+        //     'page_title': 'homedesignpage',
+        //     'page_path': $state.current.url
+        // });
         $scope.homesdesign = [];
         $scope.home = false;
         $scope.facades = [];
@@ -134,21 +134,21 @@
                 //    console.log('resdp:',resp);
                 // })
             } else {
-                $http.get('http://chuckformetricon.australiasoutheast.cloudapp.azure.com:81/consolidated').then(function(resp) {
-                    if (resp.status == 200 && resp.statusText == 'OK') {
-                        $scope.datas = resp.home_designs;
-                        _.each($scope.datas, function(row) {
-                            row.image = 'img/bg2.jpg';
-                            _.each(row.facade_designs, function(row2) {
-                                row2.image = 'http://chuckformetricon.australiasoutheast.cloudapp.azure.com/public/uploads/facade_types/callulatraditional.jpg';
-                            })
-                        });
-                        $scope.design = $scope.datas;
-                        $scope.homecopy = angular.copy($scope.design);
-                        $scope.floorplans = data.floorplans;
-                        $localForage.setItem('property', resp.data);
-                    }
-                })
+                // $http.get('http://chuckformetricon.australiasoutheast.cloudapp.azure.com:81/consolidated').then(function(resp) {
+                //     if (resp.status == 200 && resp.statusText == 'OK') {
+                //         $scope.datas = resp.home_designs;
+                //         _.each($scope.datas, function(row) {
+                //             row.image = 'img/bg2.jpg';
+                //             _.each(row.facade_designs, function(row2) {
+                //                 row2.image = 'http://chuckformetricon.australiasoutheast.cloudapp.azure.com/public/uploads/facade_types/callulatraditional.jpg';
+                //             })
+                //         });
+                //         $scope.design = $scope.datas;
+                //         $scope.homecopy = angular.copy($scope.design);
+                //         $scope.floorplans = data.floorplans;
+                //         $localForage.setItem('property', resp.data);
+                //     }
+                // })
             }
             // $localForage.getItem('property_data').then(function(resp) {
             //     console.log('resp:',resp);

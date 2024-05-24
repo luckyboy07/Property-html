@@ -1,0 +1,117 @@
+<div class="backgrund" style="{{classes}};-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;">
+    <div class="row">
+        <!-- <button class="backbtn color-btn" ng-click="goBack()" id="btn-back"><img src="img/backarrow.svg"></button> -->
+     <!--    <button style="position: absolute;right: 0px;padding: 15px 30px;"  id="btn-back" ng-click="goBack()"><img src="img/clear.svg"></button> -->
+         <a href="" ng-click="goBack()" id="btn-back">
+                <img src="img/clear2.svg" style="position: absolute;right: 0px;padding: 15px 30px;">
+            </a>
+         <!-- <div class="circle1">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+         <div class="circle2">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+          <div class="circle3">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+          <div class="circle4">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+           <div class="circle5">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+          <div class="circle6">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div> -->
+          <div class="interior">
+           <span style="font-size: 2.1vw;">{{model.title_name}}</span>
+            <!-- <br><br> -->
+           <div class="selection" style="font-size:20px;padding: 10px;background: #0d374c;">
+           Exterior Scheme
+           </div>
+        </div>
+       <!--  <div class="welcome-btn">
+        	<button type="button" class="btn prop-btn" ui-sref="main.interior" id="btn-model">Show Model  <img src="img/arrow2.svg" style="padding-left: 10px;"></button>	
+        </div> -->
+    </div>
+</div>
+<style type="text/css">
+.backgrund {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+.welcome-btn{
+	    position: absolute;
+        right: 80px;
+    bottom: 37px;
+}
+.prop-btn {
+	font-size: 18px;
+	height: 48px;
+    width: 196px;
+    border-radius: 36px;
+    background-color: rgba(9, 152, 161, 0.74);
+    color: #ffffff;
+    padding-left: 14px;
+}
+.interior{
+    position: absolute;
+       bottom: 0px;
+    left: 0px;
+    color: #fff;
+        width: 25%;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), #083750);
+    background: -moz-linear-gradient(to bottom, rgba(0, 0, 0, 0), #083750);
+    background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0), #083750);
+    background: -o-gradient(to bottom, rgba(0, 0, 0, 0), #083750);
+    background: -ms-linear-gradient(to bottom, rgba(0, 0, 0, 0), #083750);
+}
+
+}
+.selection{
+        background: #0d374c;
+    font-size: 20px;
+    /* height: 23px; */
+    padding: 10px;
+}
+.circle1 {
+    position: absolute;
+    right: 44%;
+    top: 43%;
+}
+.circle2 {
+   position: absolute;
+    right: 58%;
+    top: 59%;
+}
+.circle3 {
+    position: absolute;
+    right: 50%;
+    top: 62%;
+}
+.circle4 {
+    position: absolute;
+    right: 80%;
+    top: 50%;
+}
+.circle5 {
+    position: absolute;
+    right: 75.5%;
+    top: 65%;
+}
+.circle6 {
+      position: absolute;
+    right: 18%;
+    top: 62%;
+}
+</style>

@@ -1,0 +1,756 @@
+<div  id="home" class="" resize-test>
+    <div style="overflow-x:hidden">
+        <button class="backbtn color-btn" ng-click="goBack()" id="btn-back"><img src="img/backarrow.svg"></button>
+        <div class="backgrund" ng-class="half ? 'col-md-12': 'col-md-8'" style="transition: all .40s ease;" ng-click="close()">
+            <div class="center" style="margin-bottom: 30px;">
+                <h2 style="font-size: 3.2em;font-weight: 600;">Enter your home type</h2>
+            </div>
+            <div class="form-wrap">
+                <form role="form" ng-submit="start()" name="homeForm">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <!-- ng-keypress="($event.which === 13)?getDetail('home',$event):0" -->
+                            <input type="text" class="form-control input-border" ng-change="getText(homeText)" name="validate-text" id="validate-text" placeholder="Home Design" style="height: 51px;color: #1f6468;font-weight: bold;" ng-model="data.home_design_name" required ng-readonly="true">
+                            <span class="input-clear" style="" ng-if="homeText.length>0"><span ng-click="clearText()">x</span></span>
+                            <span class="input-group-addon span-border" ng-click="getDetail('home',$event)" id="btn-getdetailhome" ga-track-event="['button', 'get', 'Home Design']"><img src="img/icon.png"> </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-border" name="validate-text" id="validate-text" placeholder="Facade Type" style="height: 51px;color: #1f6468;font-weight: bold;" ng-model="data.space_name" required ng-readonly="true">
+                            <span class="input-group-addon span-border" ng-click="getDetail('facade',$event)" id="btn-getdetailfacade" ga-track-event="['button', 'get', 'Facade Type']"><img src="img/icon.png"> </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-border" name="validate-text" id="validate-text" placeholder="Floor plan" style="height: 51px;color: #1f6468;font-weight: bold;" ng-model="data.floor_name" required ng-readonly="true">
+                            <span class="input-group-addon span-border" ng-click="getDetail('floorplan',$event)" id="btn-getdetailfloorplan" ga-track-event="['button', 'get', 'Floor plan']"><img src="img/icon.png"> </span>
+                        </div>
+                    </div>
+                    <input type="submit" id="btn-homestart" class="btn btn-custom btn-lg btn-block prop-btn" value="Start" ng-disabled="homeForm.$invalid" ga-track-event="['button', 'start', 'Selection Page']">
+                </form>
+            </div>
+        </div>
+        <!-- slideRight -->
+        <!-- slideRight -->
+        <!-- slideRight -->
+        <div class="slideInRight sidEER" ng-class="{'sideActive':!half}" style="height: 100vh;overflow-y: scroll;">
+            <div class="modal-header" style="height: 70px;">
+                <button type="button" class="close" data-dismiss="modal" ng-click="close()" style="outline: 0;margin-top: 0;"><span aria-hidden="true" style="font-size: 30px;padding-right: 15px;" id="btn-closemodal">
+                    <img src="img/close.svg"></span><span class="sr-only">Close</span>
+                </button>
+                <h3 class="modal-title" id="lineModalLabel" style="font-weight: bold;"><img src="img/title_icon.png"> {{title}}</h3>
+            </div>
+            <div class="col-md-12" style="padding:0px;" ng-if="home">
+                <div class="dynamic-grid" angular-grid="homesdesign" ag-grid-width="screenHeight" ag-gutter-size="0" ag-options="angularGridOptions" ag-id="home">
+                    <li data-ng-repeat="img in design" class="grid" ng-click="getHomeDesign(img,$index)" style="width: 100% !important;" ga-track-event="['button', 'start', 'Selection Page']">
+                        <img ng-src="{{img.image}}" err-src="{{images[0].image}}" class="grid-img" id="home-img">
+                        <!-- <div class="card-block" style="background: #071c2d;">
+                            {{img.item_name || img.space_name}}
+                        </div> -->
+                        <div class="item-overlay" ng-class="{'top':img.selected}">
+                            <!-- img-active -->
+                            <img src="img/selected.png" class="item-Img" ng-class="{'img-active':img.selected}">
+                            <div class="item-Name" ng-class="{'active-name':$index == selected}">{{img.home_design_name || img.space_name}}</div>
+                        </div>
+                    </li>
+                </div>
+            </div>
+            <div ng-if="floorplan">
+                <div ng-switch="detail">
+                    <div ng-switch-when="true">
+                        <div class="col-md-12" ng-repeat="item in floorplans" ng-click="getFloorplan(item,$index)">
+                            <div class="card card-pad" style="padding: 25px;box-shadow: none;">
+                                <!-- <div class="overlay">
+                                    <img src="img/selected.png" class="selects">
+                                    <button class="btns" ng-click="viewDetails()">View Details</button>
+                                    <div class="overlay-name">
+                                        {{item.plan_name}}
+                                    </div>
+                                </div> -->
+                                <img class="card-img-top" src="{{item.media_files[0].asset_url}}" err-src="./img/floor.png" id="floorplan-img">
+                                <!--  <div class="card-block" style="background: #071c2d;">
+                                    {{item.plan_name}}
+                                </div> -->
+                                <div class="item-overlay1" ng-class="{'item-topzz':item.selected}">
+                                    <img src="img/selected.png" class="item-Img" ng-class="{'actives':item.
+                                    selected}">
+                                    <!-- <button class="btns item-Btn" ng-click="viewDetails()" id="btn-viewfloorplan">View Details</button> -->
+                                    <div class="item-Name" style="height: 35px;font-size: 15px;padding: 10px 30px;"> {{item.fp_design_name}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <div class="card card-pad">
+                                <img class="card-img-top" src="img/floorplan.png">
+                                <div class="card-block" style="background: #071c2d;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card card-pad">
+                                <img class="card-img-top" src="img/floorplan.png">
+                                <div class="card-block" style="background: #071c2d;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card card-pad">
+                                <img class="card-img-top" src="img/floorplan.png">
+                                <div class="card-block" style="background: #071c2d;">
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div ng-switch-when="false">
+                        <div class="container-detail">
+                            <div class="row">
+                                <a href="" class="back" ng-click="viewDetails()">
+                                     <img src="img/backarrow_black.svg">
+                                </a>
+                            </div>
+                            <div class="title-detail">
+                                <div style="margin-bottom: 25px;text-align: center;">
+                                    <span style="font-size: 1.3em">Callula 17</span>
+                                    <div style="display: flex;margin-top: 20px;margin-left: 105px;">
+                                        <img src="img/hotel.svg" class="imgs">
+                                        <img src="img/hotel.svg" class="imgs">
+                                        <img src="img/chair.svg" class="imgs">
+                                        <img src="img/car.svg" class="imgs">
+                                    </div>
+                                </div>
+                                <div style="position: relative;margin-left: 50px;font-size: 1.6em;font-weight: bold;">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            Total Area
+                                            <br>
+                                            <span style="font-size: 20px;">{{floordetail[findDimension('Total Area')].dimension_name == 'Total Area' ? floordetail[findDimension('Total Area')].measurement : 'None'}}</span>
+                                        </div>
+                                        <div class="cold-md-6">
+                                            Min. Block Width
+                                            <br>
+                                            <span style="font-size: 20px;">{{floordetail[findDimension('Min. Block Width')].dimension_name == 'Min. Block Width' ? floordetail[findDimension('Min. Block Width')].measurement : 'None'}}</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            Feature
+                                            <br>
+                                            <span style="font-size: 20px;"><img src="img/check.svg"> Master Bed at Front</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            Measurement
+                                            <br>
+                                        </div>
+                                        <div class="col-xs-2"><img src="img/arrowup.svg"> </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>House Dimensions</h4>
+                                        </div>
+                                        <div style="font-size: 15px;" ng-repeat="item in floordetail" ng-if="item.dimension_name!='Total Area' && item.dimension_name !='Min. Block Width' && item.classification_id != 1">
+                                            <div class="col-md-6">
+                                                {{item.dimension_name}}
+                                            </div>
+                                            <div class="col-md-6" style="text-align: right;">
+                                                <div style="margin-right: 23px;">
+                                                    {{item.measurement}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>Room Dimensions</h4>
+                                        </div>
+                                        <div style="font-size: 15px;" ng-repeat="item in floordetail" ng-if="item.classification_id == 2">
+                                            <div class="col-md-6">
+                                                {{item.dimension_name}}
+                                                <div style="font-size: 15px;">
+                                                    <div class="col-md-6">
+                                                        Family
+                                                    </div>
+                                                    <div class="col-md-6" style="text-align: right;">
+                                                        <div style="margin-right: 23px;">
+                                                            {{item.measurement}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+/*.card:hover .item-overlay.item-topzz,
+.card:hover .item-overlay.top,
+.grid:active .item-overlay.top,
+.grid:hover .item-overlay.top {
+    top: 0;
+}*/
+
+.angular-grid>.angular-grid-item {
+    width: 100% !important;
+}
+
+.sidEER {
+    padding: 0;
+    height: 100vh;
+    overflow-y: scroll;
+    transition: all .40s ease;
+    width: 0px;
+    float: right !important;
+    opacity: 0;
+    transition: opacity .40s ease-in-out;
+    -moz-transition: opacity .40s ease-in-out;
+    -webkit-transition: opacity .40s ease-in-out;
+    color: #fff;
+}
+
+.input-clear {
+    display: table-cell;
+    width: 2%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 6px 12px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    /*border: 0px solid #ccc !important;*/
+    background-color: #fff;
+    ;
+}
+
+.sideActive {
+    opacity: 1;
+    width: 33.33333333%;
+    transition: all .40s ease;
+    color: #061c2e;
+}
+
+@media (min-width: 992px) {
+    .sideActive {
+        width: 33.33333333%;
+    }
+}
+
+
+.card:hover .item-overlay.right,
+.grid:active .item-overlay.right,
+.grid:hover .item-overlay.right {
+    right: 0;
+    left: 0;
+}
+
+.card:hover .item-overlay.bottom,
+.grid:active .item-overlay.bottom,
+.grid:hover .item-overlay.bottom {
+    bottom: 0;
+}
+
+.card:hover .item-overlay.left,
+.grid:active .item-overlay.left,
+.grid:hover .item-overlay.left {
+    left: 0;
+}
+
+
+
+
+
+
+/*.card:hover .item-Name,
+.grid:active .item-Name,
+.grid:hover .item-Name {
+    background: transparent;
+    font-size: 30px;
+    bottom: 28px;
+    transition-delay: .1s;
+}*/
+
+
+/*.card:hover .item-Img,
+.grid:active .item-Img,
+.grid:hover .item-Img {
+    opacity: 1;
+    transition-delay: .3s;
+}*/
+
+.card .item-Btn {
+    display: inherit;
+    transition-delay: .3s;
+}
+
+
+.item-overlay1.item-topzz {
+    top: 0;
+}
+
+
+
+
+
+
+/* 
+by default, overlay is visible… 
+*/
+
+.item-overlay {
+    position: absolute;
+    top: 87%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(92, 186, 189, 0.45), #021c1d);
+    color: #fff;
+    overflow: hidden;
+    /*text-align: center;*/
+    /* fix text transition issue for .left and .right but need to overwrite left and right properties in .right */
+    width: 100%;
+    -moz-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+    -webkit-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+    transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+}
+
+.item-overlay1 {
+    position: absolute;
+    top: 92%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(92, 186, 189, 0.45), #021c1d);
+    color: #fff;
+    overflow: hidden;
+    /*text-align: center;*/
+    /* fix text transition issue for .left and .right but need to overwrite left and right properties in .right */
+    width: 100%;
+    -moz-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+    -webkit-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+    transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+}
+
+.active-name {
+    background: transparent;
+    font-size: 30px;
+    bottom: 28px;
+    transition-delay: .1s;
+    padding: 1px 30px !important;
+}
+
+.item-Name {
+    position: absolute;
+    bottom: 2px;
+    left: 0px;
+    background: #071c2d;
+    height: 44px;
+    color: #fff;
+    width: 100%;
+    padding: 14px 30px;
+    font-size: 15px;
+    /* -moz-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+    -webkit-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
+    transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;*/
+}
+
+.item-Img {
+    position: absolute;
+    right: 0;
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 30px;
+    opacity: 0;
+}
+
+.item-Img.actives {
+    opacity: 1 !important;
+    transition-delay: .3s;
+}
+
+.card .img-active,
+.grid .img-active,
+.grid .img-active {
+    opacity: 1;
+    transition-delay: .3s;
+}
+
+.item-Btn {
+    display: none;
+}
+
+
+
+
+
+
+/*
+…but this hide it
+*/
+
+.item-overlay.top {
+    top: 0%;
+}
+
+.item-overlay.right {
+    right: 200%;
+    left: -100%;
+}
+
+.item-overlay.bottom {
+    bottom: 100%;
+}
+
+.item-overlay.left {
+    left: 100%;
+}
+
+.item-topzz {
+    top: 90%;
+}
+
+
+
+
+
+.card-pad {
+    margin-bottom: 15px;
+    margin: 15px;
+    margin-bottom: 50px;
+}
+
+.imgs {
+    margin-right: 50px;
+}
+
+.container-detail {
+    width: 500px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.overlay-name {
+    font-size: 3em;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    margin-left: 15px;
+    margin-bottom: 13px;
+}
+
+.container-detail .title-detail {
+    margin-top: 50px;
+    /*position: relative;*/
+    /*left: 27%;*/
+    /*top: 20%;*/
+}
+
+.back {
+    position: absolute;
+    margin-top: 10px;
+}
+
+.btns {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #307678;
+    color: white;
+    padding: .5em 1em;
+    border: none;
+    font-size: 1.3em;
+    border-radius: 4px;
+    /*text-transform: uppercase;*/
+    letter-spacing: .12em;
+    font-weight: 300;
+    width: 200px;
+    height: 46px;
+    border-radius: 20px;
+}
+
+.selects {
+    position: absolute;
+    right: 0;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+.card .overlay {
+    /*background: url('img/selected.png') no-repeat center center;*/
+    position: absolute;
+    background: linear-gradient(to bottom, #5cbabd, #021c1d);
+    /*background-color: rgb(49, 149, 154);*/
+    width: 89%;
+    height: 96%;
+    z-index: 2;
+    opacity: .9;
+    background-position-x: right;
+    background-position-y: top
+}
+
+.prop-btn {
+    background: rgba(9, 152, 161, 0.74);
+    color: #ffffff;
+    border-radius: 30px;
+    opacity: 90;
+}
+
+.input-border {
+    font-size: 18px;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+    padding-left: 25px;
+}
+
+.span-border {
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+}
+
+.form-control {
+    /*border-radius: 15px !important;*/
+}
+
+.containers {
+    width: 450px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+.backgrund {
+    /*background: linear-gradient(rgba(87, 194, 239, 0.45), rgba(32, 23, 23, 0.45))*/
+    background: linear-gradient(rgba(87, 194, 239, 0.45), rgba(32, 23, 23, 0.45)), url('img/Bg.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /*width: 100%;*/
+    height: 100vh;
+}
+
+.dynamic-grid {
+    position: relative;
+    display: none;
+}
+
+.dynamic-grid.angular-grid {
+    display: block;
+}
+
+.grid {
+    position: absolute;
+    list-style: none;
+    background: #ffffff;
+    box-sizing: border-box;
+    -webkit-transition: all 400ms ease;
+    transition: all 400ms ease;
+    overflow: hidden;
+    border-radius: 0px;
+}
+
+.grid.ng-leave {
+    -webkit-transition: all ease 400ms;
+    transition: all ease 400ms;
+}
+
+.grid.ng-leave.ng-leave-active {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+.grid.ng-enter {
+    -webkit-transition: all ease 400ms;
+    transition: all ease 400ms;
+    -webkit-transition-delay: 500ms;
+    transition-delay: 500ms;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+.grid.ng-enter.ng-enter-active {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+
+.grid-img {
+    width: 100%;
+    vertical-align: middle;
+    background-color: #fff;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.grid-img.img-loaded {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+#home .form-wrap {
+    width: 500px;
+    margin: 0 auto;
+}
+
+#home h1 {
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+#home .form-group {
+    margin-bottom: 25px;
+}
+
+#home .checkbox {
+    margin-bottom: 20px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#home .checkbox.show:before {
+    content: '\e013';
+    color: #1fa67b;
+    font-size: 17px;
+    margin: 1px 0 0 3px;
+    position: absolute;
+    pointer-events: none;
+    font-family: 'Glyphicons Halflings';
+}
+
+#home .checkbox .character-checkbox {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#home .btn.btn-custom {
+    font-size: 25px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+#home .forget {
+    font-size: 13px;
+    text-align: center;
+    display: block;
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+}
+
+.card-block {
+    color: #fff;
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    border-top: 1px solid rgba(34, 36, 38, .1);
+    box-shadow: none;
+}
+
+.card-img-top {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.span-border:focus {
+    outline: 0;
+}
+
+.card-title {
+    font-size: 1.28571429em;
+    font-weight: 700;
+    line-height: 1.2857em;
+}
+
+.card-text {
+    clear: both;
+    margin-top: .5em;
+    color: rgba(0, 0, 0, .68);
+}
+
+.card-footer {
+    font-size: 1em;
+    position: static;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    padding: .75em 1em;
+    color: rgba(0, 0, 0, .4);
+    border-top: 1px solid rgba(0, 0, 0, .05) !important;
+    background: #fff;
+}
+
+.card-inverse .btn {
+    border: 1px solid rgba(0, 0, 0, .05);
+}
+
+#toast-container .toast {
+    padding: 15px 21px 18px 15px !important;
+}
+
+@media only screen and (min-device-width: 1080px) and (max-device-width: 1920px) {
+    /*.imagehyytt {
+        height: 400px;
+    }*/
+    /* .welcome-btn {
+        position: absolute;
+        right: 80px;
+        margin-top: 30px;
+        bottom: 37px;
+        margin-bottom: 45px;
+    }*/
+    .item-overlay1{
+         top: 95%;
+    }
+    .item-overlay {
+        top: 90%;
+    }
+    .menuHyt {
+        /*height: 540px;*/
+    }
+}
+
+
+
+</style>

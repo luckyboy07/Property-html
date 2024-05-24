@@ -1,0 +1,135 @@
+<div class="backgrund" style="{{classes1}};
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;">
+    <div class="row">
+        <!-- <button class="backbtn color-btn" ng-click="goBack()" id="btn-back"><img src="img/backarrow.svg"></button> -->
+        <!-- <button style="position: absolute;right: 0px;padding: 15px 30px;"  id="btn-interiormodelback" ng-click="goBack()"><img src="img/clear2.svg"></button> -->
+          <a href="" ng-click="goBack()" id="btn-back" id="btn-interiormodelback">
+                <img src="img/clear2.svg" style="position: absolute;right: 0px;padding: 15px 30px;">
+            </a>
+       <!--  <div class="circle1">
+            <img src="img/circle-add.svg" ng-click="modal()" >
+        </div>
+        <div class="circle2">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+        <div class="circle3">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+        <div class="circle4">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+         <div class="circle5">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div>
+         <div class="circle6">
+            <img src="img/circle-add.svg" ng-click="modal()">
+        </div> -->
+        <div class="interior">
+
+           <span style="font-size: 45px;">{{model1.title_name}}</span>
+            <!-- <br><br> -->
+           <div class="selection">
+                Interior Scheme
+           </div>
+
+        </div>
+        <!--  <div class="welcome-btn">
+            <button type="button" class="btn prop-btn" ui-sref="main.client" id="btn-interiormodel">Next  <img src="img/arrow2.svg" style="position: absolute;right: 25px;"></button>   
+        </div> -->
+    </div>
+</div>
+<style type="text/css">
+.backgrund {
+    background: url('img/11.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+.circle1{
+      position: absolute;
+    top: 10%;
+    left: 50%;
+}
+.circle1:hover {
+    cursor: pointer;
+}
+
+.circle2 {
+   position: absolute;
+    right: 30%;
+    top: 21%;
+}
+
+.circle3 {
+ position: absolute;
+    right: 385px;
+    top: 29%;
+}
+
+.circle4 {
+   position: absolute;
+    left: 32%;
+    top: 35%;
+
+}
+.circle5 {
+    position: absolute;
+    right: 10%;
+    bottom: 20%;
+}
+.circle6 {
+    position: absolute;
+    bottom: 25%;
+    right: 46%;
+}
+.modal-dialog{
+    margin-top: 210px !important;
+}
+
+.modal-sm {
+    width: 400px !important;
+}
+.interior{
+    position: absolute;
+       bottom: 0px;
+    left: 0px;
+    color: #fff;
+        width: 25%;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(255,0,0,0), #083750);
+    background: -moz-linear-gradient(to bottom, rgba(255, 0, 0, 0), #083750);
+    background: -webkit-linear-gradient(to bottom, rgba(255, 0, 0, 0), #083750);
+    background: -o-gradient(to bottom, rgba(255, 0, 0, 0), #083750);
+    background: -ms-linear-gradient(to bottom, rgba(255, 0, 0, 0), #083750);
+}
+.selection{
+        background: #0d374c;
+    font-size: 20px;
+    /* height: 23px; */
+    padding: 10px;
+}
+
+.welcome-btn{
+        position: absolute;
+        right: 80px;
+    bottom: 37px;
+}
+.prop-btn {
+    font-size: 18px;
+    height: 48px;
+    /*width: 200px;*/
+        width: 196px;
+    border-radius: 36px;
+     background-color: rgba(9, 152, 161, 0.74);
+    color: #ffffff;
+    padding-left: 0px;
+}
+</style>

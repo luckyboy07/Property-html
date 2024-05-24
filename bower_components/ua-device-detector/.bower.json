@@ -1,0 +1,38 @@
+{
+  "name": "ua-device-detector",
+  "version": "1.1.8",
+  "homepage": "https://github.com/srfrnk/ua-device-detector",
+  "authors": [
+    "srfrnk <srfrnk@gmail.com>"
+  ],
+  "description": "Generic module to detect OS / Browser / Device",
+  "main": "ua-device-detector.js",
+  "keywords": [
+    "angularjs",
+    "user-agent",
+    "browser",
+    "os",
+    "device",
+    "detection"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "re-tree": "^0.0.2"
+  },
+  "_release": "1.1.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.8",
+    "commit": "966dcd9d754c0b13e9da1e3589956fb843459e72"
+  },
+  "_source": "https://github.com/srfrnk/ua-device-detector.git",
+  "_target": "^1.0.1",
+  "_originalSource": "ua-device-detector"
+}
